@@ -10,3 +10,788 @@ body {
   overflow: overlay;
   
 }
+
+
+    /* firefox */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: rgb(80, 80, 80) rgba(88, 88, 88, 0.178);
+    }
+    
+    /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+      width: 12px;    
+    }  
+  *::-webkit-scrollbar-track-piece {
+      background: rgba(78, 78, 78, 0.349);     
+   }
+  *::-webkit-scrollbar-thumb {
+      height: 20px;
+      background-color: rgb(80, 80, 80);        
+  }
+  *::-webkit-scrollbar-corner {
+      background-color: rgb(110, 110, 110);        
+  }
+  
+  
+  
+  .hidden{
+      display: none;
+  }
+  
+  .visible{
+      display: block;
+  }
+  
+  
+  
+  
+  .topmenuWrapper {
+      background-color: rgba(1, 183, 238, 0.562);
+      /*display:inline-flex;   */
+      margin-top: 30px; 
+      border-radius: 5px;
+      height: 35px;
+      margin-bottom: 40px;
+      box-shadow: 5px 10px 8px #00000063;
+      border-color: #ffffff;    
+      width: calc(109% - 100px);
+      
+  }
+  
+  .showReplyButton {
+      width: 40px;
+      border:unset;
+      background: unset;
+      outline: unset;
+      position: relative;
+      top: 57px;
+      right: -6px;
+  }
+  
+  .tagWrapper {
+      height: 45px;
+      width: 220px;
+  }
+  
+  .firstMenu {
+      border: none;
+      /*width: 100%;*/
+  }
+  
+  .loginLogga {    
+      position: relative;
+     top: -19px;
+      width: 95px;
+      height: 100%;
+      float:right;
+      opacity: 75%;
+  }
+  
+  .topMenuButtons {
+      position: relative;
+      top: -3px;
+      float:right;
+      font-family: 'IndieFlowerRegular';
+      font-weight: normal;
+      font-style: bold;
+      font-size: 15px;
+      color:rgb(1, 210, 238) ;
+      background-color: rgba(0, 0, 0, 0.39);
+      border-color:rgb(0, 0, 0) ;
+      
+  }
+  
+  .topMenuButtons:focus {
+      border-color:#00000063;
+      outline: none;
+  }
+  
+  .topMenuLoginState {
+      position: relative;
+      top: -14px;
+      float:right;
+      font-family: 'IndieFlowerRegular';
+      font-weight: normal;
+      font-style: bold;
+      font-size: 15px;
+      color: black;
+      margin-right: 8px;
+  }
+  
+  .newNote {
+      border:unset;
+      background: unset;
+      outline: unset;
+      position: relative;
+      top: -35px;    
+  }
+  
+  .newNote img{
+      width: 100px;
+      height: 100%;
+  }
+  
+  
+  .newNote2 {
+      border:unset;
+      background: unset;
+      outline: unset;
+      position: relative;
+      top: -35px;    
+  }
+  
+  .newNote2 img{
+      width: 100px;
+      height: 100%;
+  }
+  
+  
+  .logga {
+      position: relative;
+      top: -28px;
+  }
+  
+  .loginname {
+      float: right;
+      position: relative;
+      font-family: 'IndieFlowerRegular';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      top: -6px;
+  }
+  
+  div {
+      /*border: 1px solid black; */
+      border-radius: 15px;
+      padding: 6px;
+  }
+  aside {
+      float: right;
+      position: relative;
+     
+      
+  }
+  
+  .noteMenu {
+      display: inline-flex;
+      
+  }
+  
+  .individualNote {
+      max-width: 300px;
+      margin: 5px;
+      border: 2px solid black;
+      background-color: rgba(0, 0, 0, 0.753);
+      border-color:rgb(1, 238, 255) ;
+      margin-bottom: 25px;
+      height: 330px;
+      
+      box-shadow: 10px 10px 8px #00000063;
+  
+  
+  }
+  
+  .loginDiv {
+      /* display: none;  */  
+      max-width: 590px;
+      margin: 5px;
+      border: 2px solid black;
+      background-color: rgba(0, 0, 0, 0.753);
+      border-color:rgb(1, 238, 255) ;
+      margin-bottom: 45px;
+      max-height: 365px;
+      
+      box-shadow: 10px 10px 8px #00000063;
+      font-family: 'RursusCompactMonoMedium';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 16px;
+      color: rgb(1, 210, 238) ;
+  
+  }
+  
+  #user-login-button {
+      position: relative;
+      font-family: 'IndieFlowerRegular';
+      font-weight: normal;
+      font-style: bold;
+      font-size: 15px;
+      color:rgb(1, 210, 238) ;
+      background-color: rgba(0, 0, 0, 0.39);
+      border-color:rgb(0, 0, 0) ;
+  }
+  
+  #topMenuButtons:focus {
+      border-color:#00000063;
+      outline: none;
+  }
+  
+  #new-user-button {
+      position: relative;
+      font-family: 'IndieFlowerRegular';
+      font-weight: normal;
+      font-style: bold;
+      font-size: 15px;
+      color:rgb(1, 210, 238) ;
+      background-color: rgba(0, 0, 0, 0.39);
+      border-color:rgb(0, 0, 0) ;
+  }
+  
+  #new-user-button:focus {
+      border-color:#00000063;
+      outline: none;
+  }
+  
+  #user-login {
+      position: relative;
+      font-family: 'IndieFlowerRegular';
+      font-weight: normal;
+      font-style: bold;
+      font-size: 15px;
+      color:rgb(1, 210, 238) ;
+      background-color: rgba(0, 0, 0, 0.39);
+      border-color:rgb(0, 0, 0) ;
+  }
+  
+  #user-login {
+      border-color:#00000063;
+      outline: none;
+  }
+  
+  #new-user {
+      position: relative;
+      font-family: 'IndieFlowerRegular';
+      font-weight: normal;
+      font-style: bold;
+      font-size: 15px;
+      color:rgb(1, 210, 238) ;
+      background-color: rgba(0, 0, 0, 0.39);
+      border-color:rgb(0, 0, 0) ;
+  }
+  
+  #new-user {
+      border-color:#00000063;
+      outline: none;
+  }
+  
+  
+  #constr-new-note {
+      max-width: 300px;
+      margin: 5px;
+      border: 2px solid black;
+      background-color: rgba(0, 0, 0, 0.753);
+      border-color:rgb(1, 238, 255) ;
+      margin-bottom: 25px;
+      height: 515px;
+      
+      box-shadow: 10px 10px 8px #00000063;
+  
+  }
+  
+  
+  .mainParentNote{
+      border: 0px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(50px, 300px));
+      max-width: 960px;    
+      grid-gap: 20px;       
+  }
+  
+  
+  
+  .titleFont {
+      font-family: 'IndieFlowerRegular';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      color:rgb(1, 210, 238) ;
+      position:relative;
+      top: -75px;
+      border-color: rgb(1, 238, 255);
+      border-radius: 3px;
+  }
+  
+  .inputTitle {
+      position: relative;
+      top: -75px;
+      border:5px ;
+      border-color: rgb(1, 238, 255) ;
+      border-radius: 3px;
+      background-color: rgba(2, 213, 250, 0.918);
+      height: 25px;
+      width: 231px;
+  }
+  
+  .inputTitle:focus {
+      border: 0px solid black;
+      border-color:#00000063;
+      outline: none;
+  }
+  
+  #login-username {
+      position: relative;
+      border:5px ;
+      border-color: rgb(1, 238, 255) ;
+      border-radius: 3px;
+      background-color: rgba(2, 213, 250, 0.918);
+      height: 25px;
+      width: 170px;
+  }
+  
+  #login-username:focus {
+      border: 0px solid black;
+      border-color:#00000063;
+      outline: none;
+  }
+  
+  #login-password {
+      position: relative;
+      border:5px ;
+      border-color: rgb(1, 238, 255) ;
+      border-radius: 3px;
+      background-color: rgba(2, 213, 250, 0.918);
+      height: 25px;
+      width: 170px;
+      font-family: 'RursusCompactMonoMedium';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 16px;
+  }
+  
+  #login-password:focus {
+      border: 0px solid black;
+      border-color:#00000063;
+      outline: none;
+  }
+  
+  #new-username {
+      position: relative;
+      border:5px ;
+      border-color: rgb(1, 238, 255) ;
+      border-radius: 3px;
+      background-color: rgba(2, 213, 250, 0.918);
+      height: 25px;
+      width: 170px;
+  }
+  
+  #new-username:focus {
+      border: 0px solid black;
+      border-color:#00000063;
+      outline: none;
+  }
+  
+  #new-password {
+      position: relative;
+      border:5px ;
+      border-color: rgb(1, 238, 255) ;
+      border-radius: 3px;
+      background-color: rgba(2, 213, 250, 0.918);
+      height: 25px;
+      width: 170px;
+  }
+  
+  #new-password:focus {
+      border: 0px solid black;
+      border-color:#00000063;
+      outline: none;
+  }
+  
+  
+  
+  .subjectTextArea:focus {
+      border: 0px solid black;
+      border-color:#00000063;
+      outline: none;
+  }
+  
+  .checkboxWrapper {
+      position: relative;
+      top: -66px;
+      color: rgb(1, 210, 238) ;
+  }
+  
+  
+  .xCheckbox {
+      display: block;
+      position: relative; 
+      
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      margin-bottom: 5px;
+  }
+  
+  .xCheckbox input {
+      position: absolute;
+      opacity: 0;
+      height: 0;
+      width: 0;
+  }
+  
+  
+  
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: skyblue;
+    border-radius: 5px;
+   
+  }
+  
+  .xCheckbox:hover input ~ .checkmark {
+      background-color:rgb(157, 237, 248)
+  }
+  
+  .funlogga {
+      width: 75px;
+      height: 100%;
+      right: -35px;
+      position: relative;
+  }
+  
+  .funloggaInNote {
+      width: 75px;
+      height: 100%;    
+      position: relative;
+      top: -253px;
+      right: -5px;
+  }
+  
+  
+  .metalogga {
+      width: 75px;
+      height:100%;
+      position: relative;
+      right: -35px;
+  }
+  
+  .metaloggaInNote {
+      width: 75px;
+      height:100%;
+      position: relative; 
+      top: -253px;
+      right: -5px;
+  }
+  
+  .urgentlogga {
+      width: 75px;
+      height:100%;
+      position: relative;
+      right: -35px;
+  }
+  
+  .urgentloggaInNote {
+      width: 75px;
+      height:100%;
+      position: relative; 
+      top: -253px;
+      right: -5px;
+  }
+    
+  .newNoteSubjectTitle {
+      font-family: 'IndieFlowerRegular';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      color:rgb(1, 210, 238) ;
+      position:relative;
+      top: -75px;
+  }
+  
+  .subjectTextArea {
+      top: -75px;
+      position: relative;
+      background-color: rgba(2, 213, 250, 0.918);
+      border-color: rgb(1, 238, 255);
+      border-radius: 3px;
+     width: 229px;
+  }
+  
+  textarea {
+      font-family: 'RursusCompactMonoMedium';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 16px;
+  }
+  
+  .subjectInNote {
+      position: relative;
+      background-color: rgba(2, 213, 250, 0.918);
+      border-color: rgb(1, 238, 255);
+      border-radius: 3px;
+     width: 220px;
+     height: 210px;
+     font-family: 'RursusCompactMonoMedium';
+     font-weight: normal;
+     font-style: normal;
+     font-size: 16px;
+     top: -55px;
+     right: -10px;
+     word-wrap: break-word;
+     
+  }
+  
+  .voteButton {
+     width: 25px;
+     height: 30px;
+     top: -335px;
+     right: -241px;
+     /* background-color: rgba(0, 0, 0, 0.39);
+      border-color:rgb(0, 0, 0) ;*/
+      position: relative;
+      
+  }
+  
+  .voteButton:focus {    
+      border-color:#00000063;
+      outline: none;
+  }
+  
+  .voteNumber {
+      font-family: 'IndieFlowerRegular';
+      font-weight: normal;
+      font-style: bold;
+      font-size: 25px;
+      color:rgb(1, 210, 238) ;
+      top: -310px;
+      right: -247px;
+      position: relative;
+  }
+  
+  .submitNoteButton {
+      width: 234px;
+      font-family: 'IndieFlowerRegular';
+      font-weight: normal;
+      font-style: bold;
+      font-size: 20px;
+      color:rgb(1, 210, 238) ;
+      background-color: rgba(0, 0, 0, 0.39);
+      border-color:rgb(0, 0, 0) ;
+      position: relative;
+      top: -55px;
+  }
+  
+  .submitNoteButton:focus {
+      
+      border-color:#00000063;
+      outline: none;
+  }
+  
+  
+  
+  #constr-close {
+      width: 55px;
+      font-family: 'IndieFlowerRegular';
+      font-weight: normal;
+      font-style: bold;
+      font-size: 20px;
+      color:rgb(1, 210, 238) ;
+      background-color: rgba(0, 0, 0, 0.39);
+      border-color:rgb(0, 0, 0) ;
+      position: relative;
+      top: -55px;
+      float: left;
+  
+  }
+  
+  #constr-close:focus {
+      
+      border-color:#00000063;
+      outline: none;
+  }
+  
+  
+  
+  
+  .replyButton {
+      width: 50px;
+      font-family: 'IndieFlowerRegular';
+      font-weight: normal;
+      font-style: bold;
+      font-size: 17px;
+      color:rgb(1, 210, 238) ;
+      background-color: rgb(0, 0, 0);
+      border-color: rgb(1, 238, 255);
+      position: relative;   
+  
+  }
+  
+  .replyButton:focus {
+      
+      border-color:#00000063;
+      outline: none;
+  }
+  
+  .replyTextarea {
+      position: relative;
+      background-color: rgba(2, 213, 250, 0.918);
+      border-color: rgb(1, 238, 255);
+      border-radius: 3px;
+      width: 229px;
+      height: 80px;
+  }
+  
+  .replyTextarea:focus {
+      border: 0px solid black;
+      border-color:#00000063;
+      outline: none;
+  }
+  
+  
+  .opencommentButton {
+      width: 50px;
+      font-family: 'IndieFlowerRegular';
+      font-weight: normal;
+      font-style: bold;
+      font-size: 17px;
+      color:rgb(1, 210, 238) ;
+      background-color: rgba(0, 0, 0, 0.39);
+      border-color:rgb(0, 0, 0) ;
+      position: relative;
+  }
+  
+  .opencommentButton:focus {
+      
+      border-color:#00000063;
+      outline: none;
+  }
+  
+  .usernameMadenote {
+      font-family: 'RursusCompactMonoMedium';
+      font-weight: normal;
+      font-style: bold;
+      font-size: 25px;
+      color:rgb(1, 210, 238) ;
+      position: relative;
+      top: -192px;
+      
+  }
+  
+  .dateInNote {
+      font-family: 'RursusCompactMonoMedium';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 11px;
+      color:rgb(1, 210, 238) ;
+      position: relative;
+      top: -243px;
+      right: -154px;
+  }
+  
+  .numberofComments {
+      font-family: 'IndieFlowerRegular';
+      font-weight: normal;
+      font-style: bold;
+      font-size: 17px;
+      color:rgb(1, 210, 238) ;
+      position: relative;    
+      top: -120px;
+      right: -140px;
+  
+  }
+  
+  
+  
+   .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+   }
+    
+   input[type="text"]{
+      font-family: 'RursusCompactMonoMedium';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 16px;
+   }
+  
+  
+  
+   .xCheckbox input:checked ~ .checkmark:after {
+      display: block;
+   }
+    
+   
+   .xCheckbox .checkmark:after {
+      left: 3px;
+      top: 0px;
+      width: 5px;
+      height: 10px;
+      border: solid rgb(0, 0, 0);
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+   }
+  
+  
+  .newNoteTopTitle {
+      font-family: 'IndieFlowerRegular';
+      font-weight: bold;
+      font-style: normal;
+      font-size: 40px;
+      text-shadow: 2px #ffffff;
+      position: relative;
+      top:-52px;
+      border:unset;
+      height: 65px;  
+      color:rgb(6, 216, 231) ;
+  }
+  
+  .answerParent {
+      height: 400px;      /* will be changed to viewport*/ 
+      overflow: auto;
+  }
+  
+  .replyParent{
+      max-width: 300px;
+      margin: 5px;
+      border: 2px solid black;
+      background-color: rgb(0, 0, 0);
+      border-color:rgb(1, 238, 255) ;
+      margin-bottom: 25px;
+      height: 500px;
+      overflow: auto;
+      box-shadow: 10px 10px 8px #00000063;
+      position: relative; 
+      top: -200px;
+      width: 260px;
+     
+    
+      z-index: 2;
+  
+  }
+  
+  .reply {
+      position: relative;
+      background-color: rgba(2, 213, 250, 0.918);
+      border-color: rgb(1, 238, 255);
+      border-radius: 3px;
+     width: 220px;
+     max-height: 110px;
+     font-family: 'RursusCompactMonoMedium';
+     font-weight: normal;
+     font-style: normal;
+     font-size: 16px;
+     right: 5px;
+     word-wrap: break-word;
+     margin-bottom: 7px;
+     
+  }
+  
+  .commentNumbers {
+      font-family: 'IndieFlowerRegular';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 19px;
+      color:rgb(1, 210, 238) ;
+      position: relative;
+      top: 55px;
+      right: 252px;
+  }

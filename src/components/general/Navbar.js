@@ -22,22 +22,18 @@ export const Navbar = () => {
             
             <div className="topmenuWrapper">
 
-             <div className="firstMenu">
-             <button className="newNote2" src={omegapog2} alt ="nein"></button>
-              <img src={notes2} alt ="nein" className="logga"></img>
-        
-              <button className="topMenuButtons">New Note</button>
-              <button className="topMenuButtons">Logout</button>
-              
-             
-        
-              <p className="topMenuLoginState">Not Logged In</p>
+            <div className="firstMenu">
+            <button className="newNote2"><img src={omegapog2} alt ="nein"></img></button>
+             <img src={notes2} alt ="nein" className="logga"></img>
+       
+             <NavLink to="/"><button className="topMenuButtons">Home</button></NavLink>
+             <NavLink to="/loginregister"><button className="topMenuButtons">Logoff</button></NavLink>                      
+       
+             <p className="topMenuLoginState">Not Logged In</p>
+       
+           </div>            
 
-        
-            </div>
-            
-
-          </div>
+         </div>
           
         )        
     }
@@ -48,18 +44,15 @@ export const Navbar = () => {
             <div className="topmenuWrapper">
 
              <div className="firstMenu">
-             <button className="newNote2" src={omegapog2} alt ="nein"></button>
+             <button className="newNote2"><img src={omegapog2} alt ="nein"></img></button>
               <img src={notes2} alt ="nein" className="logga"></img>
         
               <NavLink to="/"><button className="topMenuButtons">Home</button></NavLink>
-              <NavLink to="/loginregister"><button className="topMenuButtons">LoginRegister</button></NavLink>        
-              
+              <NavLink to="/loginregister"><button className="topMenuButtons">LoginRegister</button></NavLink>                      
         
               <p className="topMenuLoginState">Not Logged In</p>
-
         
-            </div>
-            
+            </div>            
 
           </div>
         )

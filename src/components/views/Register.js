@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { AuthContext  } from "../../context/AuthContext";
 
 export const Register = () => {
 
     const [user, setUser] = useState({username: "", password: ""});
+    const { setIsAuth, setActiveUser } = useContext(AuthContext);
     const history = useHistory();
 
     const changeUserData = (e) => {
@@ -11,13 +13,12 @@ export const Register = () => {
     };
 
     const registerUser = (e) => {
-        e.preventDefault();
-        alert("Registered: " + JSON.stringify(user));
+        e.preventDefault();       
+        setIsAuth(true);
+        setActiveUser(user);
         history.push("/");
     }
     
-
-
     return (
       
             <div className="loginDiv">                           

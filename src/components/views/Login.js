@@ -19,10 +19,7 @@ export const Login = () => {
         history.push("/");
     }
     
-
-
-    return (
-      
+    return (      
             <div className="loginDiv">                            
                 <form onSubmit = {loginUser}>
                     <h4>Login</h4>

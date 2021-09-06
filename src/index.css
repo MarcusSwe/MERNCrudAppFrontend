@@ -33,6 +33,13 @@ body {
       background-color: rgb(110, 110, 110);        
   }
   
+  input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active
+{
+ -webkit-box-shadow: 0 0 0 30px rgba(2, 213, 250, 0.918) inset !important;
+}
   
   
   .hidden{
@@ -212,7 +219,7 @@ body {
   
   }
   
-  #user-login-button {
+  .user-login-button {
       position: relative;
       font-family: 'IndieFlowerRegular';
       font-weight: normal;
@@ -244,23 +251,24 @@ body {
       outline: none;
   }
   
-  #user-login {
+  .user-login {
       position: relative;
       font-family: 'IndieFlowerRegular';
       font-weight: normal;
       font-style: bold;
-      font-size: 15px;
+      font-size: 17px;
       color:rgb(1, 210, 238) ;
       background-color: rgba(0, 0, 0, 0.39);
-      border-color:rgb(0, 0, 0) ;
+      border-color:rgb(0, 0, 0);
+      margin-left: 17px;
   }
   
-  #user-login {
+  .user-login {
       border-color:#00000063;
       outline: none;
   }
   
-  #new-user {
+  .new-user {
       position: relative;
       font-family: 'IndieFlowerRegular';
       font-weight: normal;
@@ -269,6 +277,7 @@ body {
       color:rgb(1, 210, 238) ;
       background-color: rgba(0, 0, 0, 0.39);
       border-color:rgb(0, 0, 0) ;
+      margin-left:10px;
   }
   
   #new-user {
@@ -330,7 +339,7 @@ body {
       outline: none;
   }
   
-  #login-username {
+  .login-username {
       position: relative;
       border:5px ;
       border-color: rgb(1, 238, 255) ;
@@ -340,13 +349,13 @@ body {
       width: 170px;
   }
   
-  #login-username:focus {
+  .login-username:focus {
       border: 0px solid black;
       border-color:#00000063;
       outline: none;
   }
   
-  #login-password {
+  .login-password {
       position: relative;
       border:5px ;
       border-color: rgb(1, 238, 255) ;
@@ -360,13 +369,13 @@ body {
       font-size: 16px;
   }
   
-  #login-password:focus {
+  .login-password:focus {
       border: 0px solid black;
       border-color:#00000063;
       outline: none;
   }
   
-  #new-username {
+  .new-username {
       position: relative;
       border:5px ;
       border-color: rgb(1, 238, 255) ;
@@ -376,13 +385,13 @@ body {
       width: 170px;
   }
   
-  #new-username:focus {
+  .new-username:focus {
       border: 0px solid black;
       border-color:#00000063;
       outline: none;
   }
   
-  #new-password {
+  .new-password {
       position: relative;
       border:5px ;
       border-color: rgb(1, 238, 255) ;
@@ -392,7 +401,7 @@ body {
       width: 170px;
   }
   
-  #new-password:focus {
+  .new-password:focus {
       border: 0px solid black;
       border-color:#00000063;
       outline: none;

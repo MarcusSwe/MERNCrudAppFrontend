@@ -18,23 +18,18 @@ export const Navbar = () => {
 
 
     const authNavbar = () => {
-        return (
-            
+        return (            
             <div className="topmenuWrapper">
-
             <div className="firstMenu">
             <button className="newNote2"><img src={omegapog2} alt ="nein"></img></button>
-             <img src={notes2} alt ="nein" className="logga"></img>
-       
+             <img src={notes2} alt ="nein" className="logga"></img>                   
              <NavLink to="/"><button className="topMenuButtons">Home</button></NavLink>
-             <NavLink to="/loginregister"><button className="topMenuButtons">Logoff</button></NavLink>                      
+             <NavLink to="/"><button className="topMenuButtons">Logoff</button></NavLink>                      
        
              <p className="topMenuLoginState">Not Logged In</p>
        
            </div>            
-
-         </div>
-          
+         </div>          
         )        
     }
 
@@ -42,18 +37,16 @@ export const Navbar = () => {
     const unAuthNavbar = () => {
         return (
             <div className="topmenuWrapper">
-
              <div className="firstMenu">
              <button className="newNote2"><img src={omegapog2} alt ="nein"></img></button>
-              <img src={notes2} alt ="nein" className="logga"></img>
-        
+              <img src={notes2} alt ="nein" className="logga"></img>        
               <NavLink to="/"><button className="topMenuButtons">Home</button></NavLink>
-              <NavLink to="/loginregister"><button className="topMenuButtons">LoginRegister</button></NavLink>                      
+              <NavLink to="/login"><button className="topMenuButtons">Login</button></NavLink>                      
+              <NavLink to="/register"><button className="topMenuButtons">Register</button></NavLink>                      
         
               <p className="topMenuLoginState">Not Logged In</p>
         
             </div>            
-
           </div>
         )
     }

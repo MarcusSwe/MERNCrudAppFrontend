@@ -12,11 +12,7 @@ const Printa = (props) => {
     const [upvote, addUpvote] = useState();
     const [replay, addReplay] = useState();
 
-    const printaTags = (props) => {
-
-    }
-
-    
+  
 
     const printaReplys = (props, index) => {
         
@@ -31,9 +27,8 @@ const Printa = (props) => {
                )};
            </div>            
         } else {
-            returnX = <div> test</div>;
+            returnX = <div> </div>;
         }       
-
             return (
                 <div>
                 {returnX}
@@ -41,6 +36,42 @@ const Printa = (props) => {
             )      
                
     }
+
+    const printaTags = (props, index) => {
+
+        let returnFun = "";
+        let returnMeta = "";
+        let returnUrgent = "";
+        
+        if(props.notes[index].tags.fun) {            
+            returnFun = <img src={tagFun} className="funloggaInNote"></img>
+        }
+
+        if(props.notes[index].tags.meta) {
+            returnMeta = <img src={tagMeta} className="metaloggaInNote"></img>
+        }
+
+        if(props.notes[index].tags.urgent) {
+            returnUrgent = <img src={tagUrgent} className="urgentloggaInNote"></img>;
+        }
+
+        return (
+            <div>
+                {returnFun}
+                {returnMeta}
+                {returnUrgent}
+            </div>
+        )
+
+    }
+
+    /*   {<img src={tagFun} className="funloggaInNote"></img>
+                <img src={tagMeta} className="metaloggaInNote"></img>
+                <img src={tagUrgent} className="urgentloggaInNote"></img>}
+
+                return `profileTextField${y}`
+                */
+
 
 
 return (
@@ -70,9 +101,7 @@ return (
             </div>
 
             <div className="tagwrapper">
-            <img src={tagFun} className="funloggaInNote"></img>
-                <img src={tagMeta} className="metaloggaInNote"></img>
-                <img src={tagUrgent} className="urgentloggaInNote"></img>
+                {printaTags(props, index)}
             </div>
 
             <div className="replyParent" style={{top: "-220px",}}>

@@ -16,31 +16,31 @@ const Printa = (props) => {
 
     }
 
+    
+
     const printaReplys = (props, index) => {
         
-        return (
-            <div>
-            {props.notes[index].replayss.map((p, index) =>
-                <div className="reply">
-                {p.replayText}
-                </div>
-                )}
-            </div>
-        )
+        let returnX = "";
 
+        if(props.notes[index].replayss.length > 0){
+           returnX = <div>
+           {props.notes[index].replayss.map((p, index) =>
+               <div className="reply">
+               {p.replayText}
+               </div>
+               )};
+           </div>            
+        } else {
+            returnX = <div> test</div>;
+        }       
+
+            return (
+                <div>
+                {returnX}
+                </div>
+            )      
+               
     }
-
-    /*
-    {props.notes.map((p, index) =>
-                <div className="reply">
-                {p.replayss[0].replayText}
-                </div>
-                )}
-                */
-
-    /* <div className="reply">
-                        test comments
-                    </div>*/
 
 
 return (

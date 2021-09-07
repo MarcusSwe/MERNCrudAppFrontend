@@ -18,12 +18,17 @@ export const Home = () => {
     replayss:[{replayID: 1, replayUser: "replayUser10", replayText: "replaytext2"},
      {replayID: 2, replayUser: "replayUser22", replayText: "replaytext22"},
      {replayID: 3, replayUser: "replayUser2432", replayText: "replaytext2432"}]
+    },
+    {noteID: 3, theme: 1, author: "testUser3", title: "title3", message: "oemga ösdjf asdfaf",
+    date: "2022-09-09", tags: "meta", upvote: 1, replays: 1, 
+    replayss:[]
     }
+
     ])
 
     const addNote = (addAuthor, addTitle, addMessage, addDate, addTags) => {
         const changed = [...testNote];
-        changed.push({noteID: 0, theme: 0, author: addAuthor, title: addTitle, message: addMessage, date: addDate, tags: addTags, upvote:0, replays:0, replayss:[{}]})
+        changed.push({noteID: 0, theme: 0, author: addAuthor, title: addTitle, message: addMessage, date: addDate, tags: addTags, upvote:0, replays:0, replayss:[ ]})
         setTestNote(changed);
     }
 

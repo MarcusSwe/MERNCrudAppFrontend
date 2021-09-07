@@ -56,7 +56,7 @@ const Printa = (props) => {
         }
 
         return (
-            <div>
+            <div className="tagwrapper">
                 {returnFun}
                 {returnMeta}
                 {returnUrgent}
@@ -70,6 +70,8 @@ const Printa = (props) => {
                 <img src={tagUrgent} className="urgentloggaInNote"></img>}
 
                 return `profileTextField${y}`
+
+                 {printaTags(props, index)}
                 */
 
 
@@ -100,9 +102,7 @@ return (
                 </div>
             </div>
 
-            <div className="tagwrapper">
-                {printaTags(props, index)}
-            </div>
+            {printaTags(props, index)}
 
             <div className="replyParent" style={{top: "-220px",}}>
                 <button class="replyButton">Reply</button>

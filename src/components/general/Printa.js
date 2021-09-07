@@ -2,19 +2,49 @@ import React, { useState } from "react";
 import upvoteButton from '../../upvote3.png';
 import replayButton from '../../omegapog2.png';
 
+import tagFun from '../../fun10.png';
+import tagMeta from '../../meta10.png';
+import tagUrgent from '../../urgent10.png';
+
+
 const Printa = (props) => {
 
     const [upvote, addUpvote] = useState();
     const [replay, addReplay] = useState();
 
-    
+    const printaTags = (props) => {
 
+    }
+
+    const printaReplys = (props, index) => {
+        
+        return (
+            <div>
+            {props.notes[index].replayss.map((p, index) =>
+                <div className="reply">
+                {p.replayText}
+                </div>
+                )}
+            </div>
+        )
+
+    }
+
+    /*
+    {props.notes.map((p, index) =>
+                <div className="reply">
+                {p.replayss[0].replayText}
+                </div>
+                )}
+                */
+
+    /* <div className="reply">
+                        test comments
+                    </div>*/
 
 
 return (
     <div class="mainParentNote">
-
-
 
         {props.notes.map((p, index) => 
         
@@ -38,6 +68,23 @@ return (
                     <b className="commentNumbers">{p.replays} comments</b>
                 </div>
             </div>
+
+            <div className="tagwrapper">
+            <img src={tagFun} className="funloggaInNote"></img>
+                <img src={tagMeta} className="metaloggaInNote"></img>
+                <img src={tagUrgent} className="urgentloggaInNote"></img>
+            </div>
+
+            <div className="replyParent" style={{top: "-220px",}}>
+                <button class="replyButton">Reply</button>
+                <textarea class="replyTextarea" maxLength="100"></textarea>
+                
+                <div className="replyChild">
+                    {printaReplys(props, index)}
+                </div>
+
+            </div>
+
 
         </div>
 

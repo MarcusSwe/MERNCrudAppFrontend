@@ -5,6 +5,7 @@ import replayButton from '../../omegapog2.png';
 import tagFun from '../../fun10.png';
 import tagMeta from '../../meta10.png';
 import tagUrgent from '../../urgent10.png';
+import lolTag from '../../loltaggen.png';
 
 
 const Printa = (props) => {
@@ -45,24 +46,34 @@ const Printa = (props) => {
         let returnFun = "";
         let returnMeta = "";
         let returnUrgent = "";
+        let lolTaggenTrueOrFalse = false;
+        let lolTaggen = "";
         
         if(props.notes[index].tags.fun) {            
             returnFun = <img src={tagFun} className="funloggaInNote"></img>
+            lolTaggenTrueOrFalse = true;
         }
 
         if(props.notes[index].tags.meta) {
             returnMeta = <img src={tagMeta} className="metaloggaInNote"></img>
+            lolTaggenTrueOrFalse = true;
         }
 
         if(props.notes[index].tags.urgent) {
             returnUrgent = <img src={tagUrgent} className="urgentloggaInNote"></img>;
+            lolTaggenTrueOrFalse = true;
         }
+
+        if(!lolTaggenTrueOrFalse){            
+            lolTaggen = <img src={lolTag} className="urgentloggaInNote"></img>;
+        } 
 
         return (
             <div className="tagwrapper">
                 {returnFun}
                 {returnMeta}
                 {returnUrgent}
+                {lolTaggen}
             </div>
         )
 

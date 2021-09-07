@@ -11,22 +11,22 @@ export const Home = () => {
 
     const [testNote, setTestNote] = useState([
         {theme: 0, author: "testUser", title: "title", message: "asfkjasdflökj asdflkjsdaf asdlfkjsad asdklfj asdfölkjs dsflöksjdf  sadfklösdjf asdfaf",
-    date: "2021-09-09", tags:{fun: true, meta:true, urgent:true}, upvote: 5, replays: 2, 
+    date: "2021-9-9", tags:{fun: true, meta:true, urgent:true}, upvote: 5, replays: 2, 
     replayss:[{replayUser: "replayUser", replayText: "replaytext"},
      {replayUser: "replayUser2", replayText: "replaytext2"}]
     },
     {theme: 1, author: "testUser2", title: "title2", message: "23456456 34564356 asdlfkjsad asd4356j asdfölkjs dsflöksjdf  sadfklösdjf asdfaf",
-    date: "2022-09-09", tags:{fun: true, meta:true, urgent:false}, upvote: 1, replays: 3, 
+    date: "2022-9-9", tags:{fun: true, meta:true, urgent:false}, upvote: 1, replays: 3, 
     replayss:[{replayUser: "replayUser10", replayText: "replaytext2"},
      {replayUser: "replayUser22", replayText: "replaytext22"},
      {replayUser: "replayUser2432", replayText: "replaytext2432"}]
     },
     {theme: 1, author: "testUser3", title: "title3", message: "oemga ösdjf asdfaf",
-    date: "2022-09-09", tags:{fun: false, meta:false, urgent:true}, upvote: 1, replays: 0, 
+    date: "2022-9-9", tags:{fun: false, meta:false, urgent:true}, upvote: 1, replays: 0, 
     replayss:[]
     },    
     {theme: 1, author: "testUser3", title: "title3", message: "oemga ösdjf asdfaf",
-    date: "2022-09-09", tags:{fun: false, meta:false, urgent:false}, upvote: 1, replays: 1, 
+    date: "2022-9-9", tags:{fun: false, meta:false, urgent:false}, upvote: 1, replays: 1, 
     replayss:[{replayUser: "replayUser10", replayText: "replaytext2"}]
     }
     ])
@@ -49,9 +49,9 @@ export const Home = () => {
     }
 
 
-    const addNote = (addAuthor, addTitle, addMessage, tagFun, tagMeta, tagUrgent) => {
+    const addNote = (addDate, addAuthor, addTitle, addMessage, tagFun, tagMeta, tagUrgent) => {
         const changed = [...testNote];
-        changed.push({theme: 1, author: addAuthor, title: addTitle, message: addMessage, date: "2021-09-06", tags: {fun:tagFun, meta: tagMeta, urgent: tagUrgent}, upvote:0, replays:0, replayss:[]})
+        changed.push({theme: 1, author: addAuthor, title: addTitle, message: addMessage, date: addDate, tags: {fun:tagFun, meta: tagMeta, urgent: tagUrgent}, upvote:0, replays:0, replayss:[]})
         setTestNote(changed);
     }
 
@@ -69,8 +69,8 @@ export const Home = () => {
             alert("Forget title or input text!");
         } else {
             const date = new Date();
-            console.log(date);
-            addNote(activeUser.username, newTitle, replayText, funTagX, metaTagX, urgentTagX);
+            console.log(date.getFullYear()+"-"+(date.getUTCMonth()+1)+"-"+date.getUTCDate());
+            addNote(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate(),activeUser.username, newTitle, replayText, funTagX, metaTagX, urgentTagX);
             callOpenUpNewPost();
         }
 
@@ -79,8 +79,9 @@ export const Home = () => {
     const addReplayToNote = (i, newReplayX) => {
         const changed = [...testNote];
         let x = changed[i].replays;
-        console.log(changed);
-        changed[i].replayss.push({replayuser: "cpåke", replayText: newReplayX});
+        //console.log(changed);
+        console.log(activeUser.username);
+        changed[i].replayss.push({replayUser: activeUser.username, replayText: newReplayX});
         changed[i].replays = x+1;
         setTestNote(changed);
     }

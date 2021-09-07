@@ -131,7 +131,7 @@ return (
             {printaTags(props, index)}
 
             <div className={openReplayUp(index)} style={{top: "-220px",}}>
-                <button class="replyButton" onClick={e => {props.addReplayToNote(index, replayText); console.log(replayText)}}>Reply</button>
+                <button class="replyButton" onClick={e => {props.addReplayToNote(index, replayText)}}>Reply</button>
                 <textarea class="replyTextarea" maxLength="100" onChange={e => setReplayText(e.target.value)}></textarea>
                 
                 <div className="replyChild">

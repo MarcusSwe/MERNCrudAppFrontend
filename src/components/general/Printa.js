@@ -27,7 +27,7 @@ const Printa = (props) => {
            returnX = <div>
            {props.notes[index].replayss.map((p, index) =>
                <div className="reply">
-               {p.replayText}
+               {p.replayUser}: {p.replayText}
                </div>
                )};
            </div>            
@@ -114,7 +114,7 @@ return (
             
             <div className="voteDiv">
                 <p className="voteNumber">{p.upvote}</p>
-                <img src={upvoteButton} onClick="" className="voteButton"/>
+                <img src={upvoteButton} onClick={e => {props.addVote(index)}} className="voteButton"/>
             </div>
 
             <div className="noteInfo">

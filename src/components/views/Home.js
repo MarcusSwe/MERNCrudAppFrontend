@@ -20,7 +20,7 @@ export const Home = () => {
      {replayUser: "replayUser2432", replayText: "replaytext2432"}]
     },
     {noteID: 3, theme: 1, author: "testUser3", title: "title3", message: "oemga ösdjf asdfaf",
-    date: "2022-09-09", tags:{fun: false, meta:false, urgent:true}, upvote: 1, replays: 1, 
+    date: "2022-09-09", tags:{fun: false, meta:false, urgent:true}, upvote: 1, replays: 0, 
     replayss:[]
     },    
     {noteID: 4, theme: 1, author: "testUser3", title: "title3", message: "oemga ösdjf asdfaf",
@@ -37,13 +37,19 @@ export const Home = () => {
 
     const addReplayToNote = (i, newReplayX) => {
         const changed = [...testNote];
+        let x = changed[i].replays;
         console.log(changed);
         changed[i].replayss.push({replayuser: "cpåke", replayText: newReplayX});
+        changed[i].replays = x+1;
         setTestNote(changed);
     }
 
-
-    // const updated = {...user, department: {...user.department, 'number': 7 } };
+    const addUpvote = (i) => {
+        const changed = [...testNote];
+        let x = changed[i].upvote;
+        changed[i].upvote = x+1;
+        setTestNote(changed);
+    }
 
     const {isAuth} = useContext(AuthContext);
 
@@ -70,6 +76,7 @@ export const Home = () => {
             notes={testNote}
             addNote = {addNote}
             addReplayToNote = {addReplayToNote}
+            addVote = {addUpvote}
             />
         </>
     )

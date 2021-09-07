@@ -14,6 +14,7 @@ const Printa = (props) => {
     const [replay, addReplay] = useState();
     const [showReplay, setShowReplay] = useState(false);
     const [indexX, setIndexX] = useState(1212112120);
+    const [replayText, setReplayText] = useState("");
 
 
   
@@ -130,8 +131,8 @@ return (
             {printaTags(props, index)}
 
             <div className={openReplayUp(index)} style={{top: "-220px",}}>
-                <button class="replyButton">Reply</button>
-                <textarea class="replyTextarea" maxLength="100"></textarea>
+                <button class="replyButton" onClick={e => {props.addReplayToNote(index, replayText); console.log(replayText)}}>Reply</button>
+                <textarea class="replyTextarea" maxLength="100" onChange={e => setReplayText(e.target.value)}></textarea>
                 
                 <div className="replyChild">
                     {printaReplys(props, index)}

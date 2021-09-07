@@ -113,6 +113,25 @@ input:-webkit-autofill:active
       border-color:#00000063;
       outline: none;
   }
+
+  .topMenuButtonsX {
+    position: relative;
+    top: -3px;
+    float:left;
+    font-family: 'IndieFlowerRegular';
+    font-weight: normal;
+    font-style: bold;
+    font-size: 15px;
+    color:rgb(1, 210, 238) ;
+    background-color: rgba(0, 0, 0, 0.39);
+    border-color:rgb(0, 0, 0) ;
+    
+}
+
+.topMenuButtonsX:focus {
+    border-color:#00000063;
+    outline: none;
+}
   
   .topMenuLoginState {
       position: relative;
@@ -199,6 +218,21 @@ input:-webkit-autofill:active
   
   
   }
+
+  .individualNote2 {
+    max-width: 273px;
+    margin: 5px;
+    border: 2px solid black;
+    background-color: rgba(0, 0, 0, 0.753);
+    border-color:rgb(1, 238, 255) ;
+    margin-top: 70px;
+    margin-bottom: 25px;
+    height: 510px;
+    
+    box-shadow: 10px 10px 8px #00000063;
+
+
+}
   
   .loginDiv {
       /* display: none;  */  

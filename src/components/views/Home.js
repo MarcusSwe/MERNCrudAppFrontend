@@ -32,6 +32,11 @@ export const Home = () => {
     ])
 
     const [showNewPost, setShowNewPost] = useState(false);
+    const [replayText, setReplayText] = useState("");
+    const [newTitle, setNewTitle] = useState("");
+    const [funTagX, setFunTagX] = useState(false);
+    const [metaTagX, setMetaTagX] = useState(false);
+    const [urgentTagX, setUrgentTagX] = useState(false);
 
     const openNewpost = () => {        
         if(showNewPost){
@@ -44,10 +49,31 @@ export const Home = () => {
     }
 
 
-    const addNote = (addTheme, addAuthor, addTitle, addMessage, addDate, tagFun, tagMeta, tagUrgent) => {
+    const addNote = (addAuthor, addTitle, addMessage, tagFun, tagMeta, tagUrgent) => {
         const changed = [...testNote];
-        changed.push({theme: addTheme, author: addAuthor, title: addTitle, message: addMessage, date: addDate, tags: {fun:tagFun, meta: tagMeta, urgent: tagUrgent}, upvote:0, replays:0, replayss:[]})
+        changed.push({theme: 1, author: addAuthor, title: addTitle, message: addMessage, date: "2021-09-06", tags: {fun:tagFun, meta: tagMeta, urgent: tagUrgent}, upvote:0, replays:0, replayss:[]})
         setTestNote(changed);
+    }
+
+    const addNoteCheck = () => {
+        
+        let omegaX = false;
+
+        if(newTitle === ""){            
+            omegaX = true;
+        } 
+        if(replayText === ""){
+            omegaX = true;
+        }
+        if(omegaX){
+            alert("Forget title or input text!");
+        } else {
+            const date = new Date();
+            console.log(date);
+            addNote(activeUser.username, newTitle, replayText, funTagX, metaTagX, urgentTagX);
+            callOpenUpNewPost();
+        }
+
     }
 
     const addReplayToNote = (i, newReplayX) => {
@@ -66,7 +92,7 @@ export const Home = () => {
         setTestNote(changed);
     }
 
-    const {isAuth} = useContext(AuthContext);
+    const {isAuth , activeUser} = useContext(AuthContext);
 
     const isAuthyes = () => {
         return (
@@ -79,33 +105,33 @@ export const Home = () => {
                 <div>
                     <form>
                     <label for="constr-title" className="titleFont"><b>New Note Title</b></label>
-                    <input id="constr-title" type="text" name="constr-title" value="" className="inputTitle" maxlength="12" size="24" />
+                    <input type="text" name="constr-title" value={newTitle} className="inputTitle" maxlength="12" size="24" onChange={e => {setNewTitle(e.target.value)}} />
                     <br/>
 
                     <div className="checkboxWrapper">
                         <label className="xCheckbox">
-                        <input type="checkbox" name="tag1" value="F"/>
+                        <input type="checkbox" checked={funTagX} onChange={e => {setFunTagX(!funTagX)}} name="tag1" value="F"/>
                         <span className="checkmark"></span>
                         <img src={tagFun} className="funlogga"/>
                         </label>
 
                         <label className="xCheckbox">
-                        <input type="checkbox" id="constr-tag2" name="tag2" value="M" />
+                        <input type="checkbox" checked={metaTagX} onChange={e => {setMetaTagX(e.target.checked)}} name="tag2" value="M" />
                         <span className="checkmark"></span>
                         <img src={tagMeta} className="metalogga"/>
                         </label>
 
                         <label className="xCheckbox">
-                        <input type="checkbox" id="constr-tag3" name="tag3" value="U" />
+                        <input type="checkbox" checked={urgentTagX} onChange={e => {setUrgentTagX(!urgentTagX)}} name="tag3" value="U" />
                         <span className="checkmark"></span>
                         <img src={tagUrgent} className="urgentlogga"/>
                         </label>
                     </div>
 
                 <label for="constr-subject" className="newNoteSubjectTitle"><b>New Note Subject</b></label>
-                <textarea id="constr-subject" rows="12" cols="24" className="subjectTextArea" maxlength="275"></textarea><br/>
+                <textarea id="constr-subject" rows="12" cols="24" className="subjectTextArea" maxlength="275" onChange={e => setReplayText(e.target.value)}></textarea><br/>
 
-                <input type="button" id="constr-submit" name="submit" value="Submit" className="submitNoteButton"/>
+                <input type="button" id="constr-submit" name="submit" value="Submit" className="submitNoteButton" onClick={e => {addNoteCheck()}}/>
                 <input type="button" id="constr-close" name="close" value="close" onClick={e => {callOpenUpNewPost()}}/>
                 </form>
             </div>

@@ -1,11 +1,27 @@
+import React, { useState } from "react";
 
 
-const Printa = () => {
+
+
+const Printa = (props) => {
+
+    const [upvote, addUpvote] = useState();
+    const [replay, addReplay] = useState();
+
+    
+
 
 
 return (
-    <div>
-        test
+    <div class="mainParentNote">
+
+        {props.notes.map((p, index) => <div>
+            <p>{p.message}</p>
+            </div>
+
+        )}
+
+  
     </div>
 )
 

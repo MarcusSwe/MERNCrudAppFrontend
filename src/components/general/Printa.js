@@ -104,7 +104,7 @@ return (
 
             {printaTags(props, index)}
 
-            <div className="replyParent" style={{top: "-220px",}}>
+            <div className="replyParent hidden" style={{top: "-220px",}}>
                 <button class="replyButton">Reply</button>
                 <textarea class="replyTextarea" maxLength="100"></textarea>
                 

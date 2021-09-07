@@ -11,6 +11,9 @@ const Printa = (props) => {
 
     const [upvote, addUpvote] = useState();
     const [replay, addReplay] = useState();
+    const [showReplay, setShowReplay] = useState(false);
+    const [indexX, setIndexX] = useState(1212112120);
+
 
   
 
@@ -65,6 +68,17 @@ const Printa = (props) => {
 
     }
 
+    const openReplayUp = (props) => {        
+        if(showReplay && props == indexX){
+            return `replyParent`
+        } else return `replyParent hidden`
+    }
+
+    const callOpenUpReplay = (props) => {
+        setIndexX(props);
+        setShowReplay(!showReplay)
+    }
+
     /*   {<img src={tagFun} className="funloggaInNote"></img>
                 <img src={tagMeta} className="metaloggaInNote"></img>
                 <img src={tagUrgent} className="urgentloggaInNote"></img>}
@@ -81,7 +95,7 @@ return (
 
         {props.notes.map((p, index) => 
         
-        <div className="individualNote">
+        <div key={p.index} className="individualNote">
                 
             <div className="newNoteTopTitle"><b>{p.title}</b></div>
             <div className="subjectInNote">{p.message}</div>
@@ -97,14 +111,14 @@ return (
                 </div>
                 <div className="dateInNote">
                     {p.date}
-                    <img src={replayButton} onClick="" className="showReplyButton"/>
+                    <img src={replayButton} onClick={e => {callOpenUpReplay(index)}} className="showReplyButton"/>
                     <b className="commentNumbers">{p.replays} comments</b>
                 </div>
             </div>
 
             {printaTags(props, index)}
 
-            <div className="replyParent hidden" style={{top: "-220px",}}>
+            <div className={openReplayUp(index)} style={{top: "-220px",}}>
                 <button class="replyButton">Reply</button>
                 <textarea class="replyTextarea" maxLength="100"></textarea>
                 

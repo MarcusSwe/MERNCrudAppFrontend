@@ -16,17 +16,47 @@ const Printa = (props) => {
     const [indexX, setIndexX] = useState(1212112120);
     const [replayText, setReplayText] = useState("");
 
+    function colorSconst (yTitle, yMain, ySubject, yVote, yTag, yComment, yDate, yReplyparent, yReplytextareaBackground, yReplytextareaBorder, yReplybuttonBorder, yReplybuttonColor, yreplyDiv){
+        this.title = yTitle;
+        this.main = yMain;
+        this.subject = ySubject;
+        this.vote = yVote;
+        this.tag = yTag;
+        this.comment = yComment;
+        this.date = yDate;
+        this.replyParent = yReplyparent;
+        this.replyTextareaBackground = yReplytextareaBackground;
+        this.replyTextareaBorder = yReplytextareaBorder;
+        this.replyButtonBorder = yReplybuttonBorder;
+        this.replyButtonColor = yReplybuttonColor;
+        this.replyDiv = yreplyDiv;
+      }
+
+    let colorSarray = [];
+
+    colorSarray.push(new colorSconst("","","","","","","","","","","","",""));
+    colorSarray.push(new colorSconst("rgb(49, 60, 211)","rgb(49, 60, 211)","rgb(93, 101, 226)","rgb(93, 101, 226)","rgb(93, 101, 226)","rgb(93, 101, 226)","rgb(93, 101, 226)","rgb(49, 60, 211)","rgb(93, 101, 226)","rgb(93, 101, 226)","rgb(49, 60, 211)","rgb(49, 60, 211)","rgb(93, 101, 226)"));
+    colorSarray.push(new colorSconst("rgb(44, 82, 23)","rgb(179, 255, 134)","rgb(97, 194, 41)","rgb(97, 194, 41)","rgb(97, 194, 41)","rgb(97, 194, 41)","rgb(97, 194, 41)","rgb(179, 255, 134)","rgb(97, 194, 41)","rgb(97, 194, 41)","rgb(179, 255, 134)","rgb(179, 255, 134)","rgb(97, 194, 41)"));
+    colorSarray.push(new colorSconst("rgb(243, 51, 157)","rgb(243, 51, 157)"," rgb(192, 47, 127)","rgb(93, 101, 226)"," rgb(192, 47, 127)"," rgb(192, 47, 127)"," rgb(192, 47, 127)","rgb(243, 51, 157)"," rgb(192, 47, 127)"," rgb(192, 47, 127)","rgb(243, 51, 157)","rgb(243, 51, 157)"," rgb(192, 47, 127)"));
+    colorSarray.push(new colorSconst(" rgb(252, 102, 102)"," rgb(252, 102, 102)","rgb(236, 56, 56)","rgb(236, 56, 56)","rgb(236, 56, 56)","rgb(236, 56, 56)","rgb(236, 56, 56)"," rgb(252, 102, 102)","rgb(236, 56, 56)","rgb(236, 56, 56)"," rgb(252, 102, 102)"," rgb(252, 102, 102)","rgb(236, 56, 56)"));
+    colorSarray.push(new colorSconst("rgb(255, 242, 65)","rgb(255, 242, 65)"," rgb(180, 171, 34)"," rgb(180, 171, 34)"," rgb(180, 171, 34)"," rgb(180, 171, 34)"," rgb(180, 171, 34)","rgb(255, 242, 65)"," rgb(180, 171, 34)"," rgb(180, 171, 34)","rgb(255, 242, 65)","rgb(255, 242, 65)"," rgb(180, 171, 34)"));
+    colorSarray.push(new colorSconst("rgb(0, 0, 0)","rgb(0, 0, 0)","rgb(121, 121, 121)","rgb(121, 121, 121)","rgb(121, 121, 121)","rgb(121, 121, 121)","rgb(121, 121, 121)","rgb(0, 0, 0)","rgb(121, 121, 121)","rgb(121, 121, 121)","rgb(0, 0, 0)","rgb(121, 121, 121)","rgb(121, 121, 121)"));
+    colorSarray.push(new colorSconst("rgb(75, 0, 250)","rgb(75, 0, 250)","rgb(155, 112, 255)","rgb(155, 112, 255)","rgb(155, 112, 255)","rgb(155, 112, 255)","rgb(155, 112, 255)","rgb(75, 0, 250)","rgb(155, 112, 255)","rgb(155, 112, 255)","rgb(75, 0, 250)","rgb(75, 0, 250)","rgb(155, 112, 255)"));
+    colorSarray.push(new colorSconst("rgb(46, 155, 137)","rgb(46, 155, 137)","rgb(70, 255, 224)","rgb(70, 255, 224)","rgb(70, 255, 224)","rgb(70, 255, 224)","rgb(70, 255, 224)","rgb(46, 155, 137))","rgb(70, 255, 224)","rgb(70, 255, 224)","rgb(46, 155, 137)","rgb(46, 155, 137)","rgb(70, 255, 224)"));
+
+    
 
   
 
     const printaReplys = (props, index) => {
         
         let returnX = "";
+        let y = index;
 
         if(props.notes[index].replayss.length > 0){
            returnX = <div>
            {props.notes[index].replayss.map((p, index) =>
-               <div className="reply">
+               <div className="reply" style={{backgroundColor: colorSarray[props.notes[y].theme].replyDiv}}>
                {p.replayUser}: {p.replayText}
                </div>
                )};
@@ -77,8 +107,7 @@ const Printa = (props) => {
                 {lolTaggen}
             </div>
         )
-
-    }
+    }   
 
     const openReplayUp = (props) => {        
         if(showReplay && props == indexX){
@@ -107,32 +136,32 @@ return (
 
         {props.notes.map((p, index) => 
         
-        <div key={p.index} className="individualNote">
+        <div key={p.index} className="individualNote" style={{borderColor: colorSarray[p.theme].main}}>
                 
-            <div className="newNoteTopTitle"><b>{p.title}</b></div>
-            <div className="subjectInNote">{p.message}</div>
+            <div className="newNoteTopTitle" style={{color: colorSarray[p.theme].title}}><b>{p.title}</b></div>
+            <div className="subjectInNote" style={{backgroundColor: colorSarray[p.theme].subject}}>{p.message}</div>
             
             <div className="voteDiv">
-                <p className="voteNumber">{p.upvote}</p>
+                <p className="voteNumber" style={{color: colorSarray[p.theme].vote}}>{p.upvote}</p>
                 <img src={upvoteButton} onClick={e => {props.addVote(index)}} className="voteButton"/>
             </div>
 
             <div className="noteInfo">
-                <div className="usernameMadenote">
+                <div className="usernameMadenote" style={{color: colorSarray[p.theme].tag}}>
                     {p.author}
                 </div>
-                <div className="dateInNote">
+                <div className="dateInNote" style={{color: colorSarray[p.theme].date}}>
                     {p.date}
                     <img src={replayButton} onClick={e => {callOpenUpReplay(index)}} className="showReplyButton"/>
-                    <b className="commentNumbers">{p.replays} comments</b>
+                    <b className="commentNumbers" style={{color: colorSarray[p.theme].comment}}>{p.replays} comments</b>
                 </div>
             </div>
 
             {printaTags(props, index)}
 
-            <div className={openReplayUp(index)} style={{top: "-220px",}}>
-                <button class="replyButton" onClick={e => {props.addReplayToNote(index, replayText)}}>Reply</button>
-                <textarea class="replyTextarea" maxLength="100" onChange={e => setReplayText(e.target.value)}></textarea>
+            <div className={openReplayUp(index)} style={{top: "-220px", borderColor: colorSarray[p.theme].replyParent}}>
+                <button class="replyButton" style={{borderColor: colorSarray[p.theme].replyButtonBorder, color: colorSarray[p.theme].replyButtonColor}} onClick={e => {props.addReplayToNote(index, replayText)}}>Reply</button>
+                <textarea class="replyTextarea" maxLength="100" style={{backgroundColor: colorSarray[p.theme].replyTextareaBackground, borderColor: colorSarray[p.theme].replyTextareaBorder}} onChange={e => setReplayText(e.target.value)}></textarea>
                 
                 <div className="replyChild">
                     {printaReplys(props, index)}

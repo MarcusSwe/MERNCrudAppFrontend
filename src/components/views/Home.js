@@ -21,11 +21,11 @@ export const Home = () => {
      {replayUser: "replayUser22", replayText: "replaytext22"},
      {replayUser: "replayUser2432", replayText: "replaytext2432"}]
     },
-    {theme: 1, author: "testUser3", title: "title3", message: "oemga ösdjf asdfaf",
+    {theme: 6, author: "testUser3", title: "title3", message: "oemga ösdjf asdfaf",
     date: "2022-9-9", tags:{fun: false, meta:false, urgent:true}, upvote: 1, replays: 0, 
     replayss:[]
     },    
-    {theme: 1, author: "testUser3", title: "title3", message: "oemga ösdjf asdfaf",
+    {theme: 8, author: "testUser3", title: "title3", message: "oemga ösdjf asdfaf",
     date: "2022-9-9", tags:{fun: false, meta:false, urgent:false}, upvote: 1, replays: 1, 
     replayss:[{replayUser: "replayUser10", replayText: "replaytext2"}]
     }
@@ -49,9 +49,10 @@ export const Home = () => {
     }
 
 
-    const addNote = (addDate, addAuthor, addTitle, addMessage, tagFun, tagMeta, tagUrgent) => {
+    const addNote = (theme, addDate, addAuthor, addTitle, addMessage, tagFun, tagMeta, tagUrgent) => {
         const changed = [...testNote];
-        changed.push({theme: 1, author: addAuthor, title: addTitle, message: addMessage, date: addDate, tags: {fun:tagFun, meta: tagMeta, urgent: tagUrgent}, upvote:0, replays:0, replayss:[]})
+
+        changed.unshift({theme: theme, author: addAuthor, title: addTitle, message: addMessage, date: addDate, tags: {fun:tagFun, meta: tagMeta, urgent: tagUrgent}, upvote:0, replays:0, replayss:[]})
         setTestNote(changed);
     }
 
@@ -70,20 +71,22 @@ export const Home = () => {
         } else {
             const date = new Date();
             console.log(date.getFullYear()+"-"+(date.getUTCMonth()+1)+"-"+date.getUTCDate());
-            addNote(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate(),activeUser.username, newTitle, replayText, funTagX, metaTagX, urgentTagX);
+            let i = Math.floor(Math.random() * 9);
+            addNote(i, date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate(),activeUser.username, newTitle, replayText, funTagX, metaTagX, urgentTagX);
             callOpenUpNewPost();
         }
 
     }
 
     const addReplayToNote = (i, newReplayX) => {
+        if(isAuth){
         const changed = [...testNote];
         let x = changed[i].replays;
         //console.log(changed);
         console.log(activeUser.username);
         changed[i].replayss.push({replayUser: activeUser.username, replayText: newReplayX});
         changed[i].replays = x+1;
-        setTestNote(changed);
+        setTestNote(changed);}
     }
 
     const addUpvote = (i) => {

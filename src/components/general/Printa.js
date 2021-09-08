@@ -111,7 +111,7 @@ const Printa = (props) => {
             <div>
                 <form>
                 <label for="constr-title" className="titleFont"><b>New Note Title</b></label>
-                <input type="text" name="constr-title" value={newTitle} className="inputTitle" maxlength="12" size="24" onChange={e => {setNewTitle(e.target.value)}} />
+                <input type="text" name="constr-title" value={newTitle} className="inputTitle" maxlength="10" size="24" onChange={e => {setNewTitle(e.target.value)}} />
                 <br/>
 
                 <div className="checkboxWrapper">

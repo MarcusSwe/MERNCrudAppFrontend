@@ -60,6 +60,19 @@ export const Home = () => {
         setTestNote(changed);
     }
 
+    const deletePostX = (d) => {
+        const changed = [...testNote];
+        changed.splice(d,1);
+        setTestNote(changed);
+    }
+
+    const updatePostX = (i, m) => {
+        const changed = [...testNote];
+        changed[i].message = m;
+        console.log(changed[i].message ,i);
+        setTestNote(changed);
+    }
+
     const {isAuth , activeUser} = useContext(AuthContext);
 
    
@@ -71,6 +84,8 @@ export const Home = () => {
             addNote = {addNote}
             addReplayToNote = {addReplayToNote}
             addVote = {addUpvote}
+            deletePost = {deletePostX}
+            updatePost = {updatePostX}
             />            
         </>
     )

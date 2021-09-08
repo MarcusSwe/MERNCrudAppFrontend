@@ -22,7 +22,8 @@ const Printa = (props) => {
     const [urgentTagX, setUrgentTagX] = useState(false);
     const [opacityLevel, setOpacityLevel] = useState(0);
     const [addNewpost, setAddNewPost] = useState(false);
-
+    const [updateText, setUpdateText] = useState("");
+ 
     const {isAuth , activeUser, newNote, setNewNote} = useContext(AuthContext);
 
 
@@ -243,7 +244,8 @@ const Printa = (props) => {
         } else return "true"
     }
 
-
+    
+  
 return (
     <div class="mainParentNote">
 
@@ -253,11 +255,11 @@ return (
         
         <div key={p.index} className="individualNote" style={{borderColor: colorSarray[p.theme].main, opacity: ifFirstPost(index)}}>
                 
-            <button className={showDeleteButton(p.author)} onClick={e => {console.log("HEEEEEEEEEEEEJ")}}>X</button>   
-            <button className={showUpdateButton(p.author)} onClick={e => {console.log("HEEEEEEEEEEEEJ")}}>E</button>   
+            <button className={showDeleteButton(p.author)} onClick={e => {props.deletePost(index)}}>X</button>   
+            <button className={showUpdateButton(p.author)} onClick={e => {props.updatePost(index, updateText)}} >E</button>   
 
             <div className="newNoteTopTitle" style={{color: colorSarray[p.theme].title}}><b>{p.title}</b></div>
-            <textarea className="subjectInNote" style={{backgroundColor: colorSarray[p.theme].subject}} readOnly={openCloseTextArea(p.author)} >{p.message}</textarea>
+            <textarea className="subjectInNote" style={{backgroundColor: colorSarray[p.theme].subject}} readOnly={openCloseTextArea(p.author)} onChange={e => {setUpdateText(e.target.value)}}>{p.message}</textarea>
             
             <div className="voteDiv">
                 <p className="voteNumber" style={{color: colorSarray[p.theme].vote}}>{p.upvote}</p>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import upvoteButton from '../../upvote3.png';
 import replayButton from '../../omegapog2.png';
 
@@ -6,6 +6,8 @@ import tagFun from '../../fun10.png';
 import tagMeta from '../../meta10.png';
 import tagUrgent from '../../urgent10.png';
 import lolTag from '../../loltaggen.png';
+
+import { AuthContext  } from "../../context/AuthContext";
 
 
 const Printa = (props) => {
@@ -15,6 +17,14 @@ const Printa = (props) => {
     const [showReplay, setShowReplay] = useState(false);
     const [indexX, setIndexX] = useState(1212112120);
     const [replayText, setReplayText] = useState("");
+    const [replayText2, setReplayText2] = useState("");
+    const [newTitle, setNewTitle] = useState("");
+    const [funTagX, setFunTagX] = useState(false);
+    const [metaTagX, setMetaTagX] = useState(false);
+    const [urgentTagX, setUrgentTagX] = useState(false);
+
+    const {isAuth , activeUser, newNote, setNewNote} = useContext(AuthContext);
+
 
     function colorSconst (yTitle, yMain, ySubject, yVote, yTag, yComment, yDate, yReplyparent, yReplytextareaBackground, yReplytextareaBorder, yReplybuttonBorder, yReplybuttonColor, yreplyDiv){
         this.title = yTitle;
@@ -44,8 +54,71 @@ const Printa = (props) => {
     colorSarray.push(new colorSconst("rgb(75, 0, 250)","rgb(75, 0, 250)","rgb(155, 112, 255)","rgb(155, 112, 255)","rgb(155, 112, 255)","rgb(155, 112, 255)","rgb(155, 112, 255)","rgb(75, 0, 250)","rgb(155, 112, 255)","rgb(155, 112, 255)","rgb(75, 0, 250)","rgb(75, 0, 250)","rgb(155, 112, 255)"));
     colorSarray.push(new colorSconst("rgb(46, 155, 137)","rgb(46, 155, 137)","rgb(70, 255, 224)","rgb(70, 255, 224)","rgb(70, 255, 224)","rgb(70, 255, 224)","rgb(70, 255, 224)","rgb(46, 155, 137))","rgb(70, 255, 224)","rgb(70, 255, 224)","rgb(46, 155, 137)","rgb(46, 155, 137)","rgb(70, 255, 224)"));
 
-    
 
+    const addNoteCheck = (props) => {
+        
+        let omegaX = false;
+
+        if(newTitle === ""){            
+            omegaX = true;
+        } 
+        if(replayText2 === ""){
+            omegaX = true;
+        }
+        if(omegaX){
+            alert("Forget title or input text!");
+        } else {
+            const date = new Date();
+            console.log(date.getFullYear()+"-"+(date.getUTCMonth()+1)+"-"+date.getUTCDate());
+            let i = Math.floor(Math.random() * 9);
+            props.addNote(i, date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate(),activeUser.username, newTitle, replayText2, funTagX, metaTagX, urgentTagX);
+           
+        }
+
+    }
+    
+    const openNewpost = (i) => {        
+        if(i){
+            return ( <div className="individualNote2">
+            <div className="newNoteTopTitle"><b>New Note</b></div>
+  
+            <div>
+                <form>
+                <label for="constr-title" className="titleFont"><b>New Note Title</b></label>
+                <input type="text" name="constr-title" value={newTitle} className="inputTitle" maxlength="12" size="24" onChange={e => {setNewTitle(e.target.value)}} />
+                <br/>
+
+                <div className="checkboxWrapper">
+                    <label className="xCheckbox">
+                    <input type="checkbox" checked={funTagX} onChange={e => {setFunTagX(!funTagX)}} name="tag1" value="F"/>
+                    <span className="checkmark"></span>
+                    <img src={tagFun} className="funlogga"/>
+                    </label>
+
+                    <label className="xCheckbox">
+                    <input type="checkbox" checked={metaTagX} onChange={e => {setMetaTagX(e.target.checked)}} name="tag2" value="M" />
+                    <span className="checkmark"></span>
+                    <img src={tagMeta} className="metalogga"/>
+                    </label>
+
+                    <label className="xCheckbox">
+                    <input type="checkbox" checked={urgentTagX} onChange={e => {setUrgentTagX(!urgentTagX)}} name="tag3" value="U" />
+                    <span className="checkmark"></span>
+                    <img src={tagUrgent} className="urgentlogga"/>
+                    </label>
+                </div>
+
+            <label for="constr-subject" className="newNoteSubjectTitle"><b>New Note Subject</b></label>
+            <textarea id="constr-subject" rows="12" cols="24" className="subjectTextArea" maxlength="275" onChange={e => setReplayText2(e.target.value)}></textarea><br/>
+
+            <input type="button" id="constr-submit" name="submit" value="Submit" className="submitNoteButton" onClick={e => addNoteCheck(props)}/>
+            <input type="button" id="constr-close" name="close" value="close" onClick={e => setNewNote(false)}/>
+            </form>
+        </div>
+
+        </div>)
+        } else return ``
+    }
   
 
     const printaReplys = (props, index) => {
@@ -133,6 +206,8 @@ const Printa = (props) => {
 
 return (
     <div class="mainParentNote">
+
+        {newNote ? openNewpost(true) : openNewpost(false)}
 
         {props.notes.map((p, index) => 
         

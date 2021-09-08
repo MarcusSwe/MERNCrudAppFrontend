@@ -1,9 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AuthContext  } from "../../context/AuthContext";
 import Printa from '../general/Printa';
-import tagFun from '../../fun10.png';
-import tagMeta from '../../meta10.png';
-import tagUrgent from '../../urgent10.png';
+
 
 
 
@@ -31,52 +29,15 @@ export const Home = () => {
     }
     ])
 
-    const [showNewPost, setShowNewPost] = useState(false);
-    const [replayText, setReplayText] = useState("");
-    const [newTitle, setNewTitle] = useState("");
-    const [funTagX, setFunTagX] = useState(false);
-    const [metaTagX, setMetaTagX] = useState(false);
-    const [urgentTagX, setUrgentTagX] = useState(false);
-
-    const openNewpost = () => {        
-        if(showNewPost){
-            return `individualNote2`
-        } else return `individualNote2 hidden`
-    }
-
-    const callOpenUpNewPost = () => {        
-        setShowNewPost(!showNewPost)
-    }
-
+ 
 
     const addNote = (theme, addDate, addAuthor, addTitle, addMessage, tagFun, tagMeta, tagUrgent) => {
         const changed = [...testNote];
-
         changed.unshift({theme: theme, author: addAuthor, title: addTitle, message: addMessage, date: addDate, tags: {fun:tagFun, meta: tagMeta, urgent: tagUrgent}, upvote:0, replays:0, replayss:[]})
         setTestNote(changed);
     }
 
-    const addNoteCheck = () => {
-        
-        let omegaX = false;
 
-        if(newTitle === ""){            
-            omegaX = true;
-        } 
-        if(replayText === ""){
-            omegaX = true;
-        }
-        if(omegaX){
-            alert("Forget title or input text!");
-        } else {
-            const date = new Date();
-            console.log(date.getFullYear()+"-"+(date.getUTCMonth()+1)+"-"+date.getUTCDate());
-            let i = Math.floor(Math.random() * 9);
-            addNote(i, date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate(),activeUser.username, newTitle, replayText, funTagX, metaTagX, urgentTagX);
-            callOpenUpNewPost();
-        }
-
-    }
 
     const addReplayToNote = (i, newReplayX) => {
         if(isAuth){
@@ -98,71 +59,18 @@ export const Home = () => {
 
     const {isAuth , activeUser} = useContext(AuthContext);
 
-    const isAuthyes = () => {
-        return (
-            <div style={{marginBottom:"45px",}}>
-            <button className="topMenuButtonsX" onClick={e => {callOpenUpNewPost()}}>Add new note</button>
-
-            <div className={openNewpost()}>
-                <div className="newNoteTopTitle"><b>New Note</b></div>
-      
-                <div>
-                    <form>
-                    <label for="constr-title" className="titleFont"><b>New Note Title</b></label>
-                    <input type="text" name="constr-title" value={newTitle} className="inputTitle" maxlength="12" size="24" onChange={e => {setNewTitle(e.target.value)}} />
-                    <br/>
-
-                    <div className="checkboxWrapper">
-                        <label className="xCheckbox">
-                        <input type="checkbox" checked={funTagX} onChange={e => {setFunTagX(!funTagX)}} name="tag1" value="F"/>
-                        <span className="checkmark"></span>
-                        <img src={tagFun} className="funlogga"/>
-                        </label>
-
-                        <label className="xCheckbox">
-                        <input type="checkbox" checked={metaTagX} onChange={e => {setMetaTagX(e.target.checked)}} name="tag2" value="M" />
-                        <span className="checkmark"></span>
-                        <img src={tagMeta} className="metalogga"/>
-                        </label>
-
-                        <label className="xCheckbox">
-                        <input type="checkbox" checked={urgentTagX} onChange={e => {setUrgentTagX(!urgentTagX)}} name="tag3" value="U" />
-                        <span className="checkmark"></span>
-                        <img src={tagUrgent} className="urgentlogga"/>
-                        </label>
-                    </div>
-
-                <label for="constr-subject" className="newNoteSubjectTitle"><b>New Note Subject</b></label>
-                <textarea id="constr-subject" rows="12" cols="24" className="subjectTextArea" maxlength="275" onChange={e => setReplayText(e.target.value)}></textarea><br/>
-
-                <input type="button" id="constr-submit" name="submit" value="Submit" className="submitNoteButton" onClick={e => {addNoteCheck()}}/>
-                <input type="button" id="constr-close" name="close" value="close" onClick={e => {callOpenUpNewPost()}}/>
-                </form>
-            </div>
-
-            </div>
-
-            </div>
-        )
-    }
-
-    const unAuth = () => {
-        return (
-        <div style={{marginBottom:"45px",}}>
-            <button className="topMenuButtonsX">Please login to post</button>
-        </div>
-        )
-    }
+   
 
     return (
-        <>          
-            {isAuth ? isAuthyes() : unAuth()}
+        <>           
             <Printa 
             notes={testNote}
             addNote = {addNote}
             addReplayToNote = {addReplayToNote}
             addVote = {addUpvote}
-            />
+            />            
         </>
     )
 }
+
+

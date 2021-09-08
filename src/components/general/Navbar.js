@@ -7,7 +7,7 @@ import '../../index.css';
 
 export const Navbar = () => {
 
-    const {isAuth, setIsAuth, activeUser} = useContext(AuthContext);
+    const {isAuth, setIsAuth, activeUser, newNote, setNewNote} = useContext(AuthContext);
     const history = useHistory();
 
 
@@ -17,15 +17,20 @@ export const Navbar = () => {
         history.push("/");
     }
 
-
+    const showNewPost = () => {
+        setNewNote(!newNote);
+        console.log(newNote);
+    }
+  
     const authNavbar = () => {
         return (            
             <div className="topmenuWrapper">
             <div className="firstMenu">
             <button className="newNote2"><img src={omegapog2} alt ="nein"></img></button>
-             <img src={notes2} alt ="nein" className="logga"></img>                               
-             <button className="topMenuButtons" onClick={logout}>Logoff</button>  
-       
+             <img src={notes2} alt ="nein" className="logga"></img>              
+             <button className="topMenuButtons" onClick={e => {showNewPost()}} >New Note</button>                   
+             <button className="topMenuButtons" onClick={logout}>Logoff</button>     
+             
              <p className="topMenuLoginState">Logged in as: {activeUser.username}</p>
        
            </div>            
@@ -59,3 +64,4 @@ export const Navbar = () => {
 
 
 }
+

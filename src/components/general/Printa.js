@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import upvoteButton from '../../upvote3.png';
 import replayButton from '../../omegapog2.png';
 
@@ -11,9 +11,7 @@ import { AuthContext  } from "../../context/AuthContext";
 
 
 const Printa = (props) => {
-
-    const [upvote, addUpvote] = useState();
-    const [replay, addReplay] = useState();
+   
     const [showReplay, setShowReplay] = useState(false);
     const [indexX, setIndexX] = useState(1212112120);
     const [replayText, setReplayText] = useState("");
@@ -22,6 +20,8 @@ const Printa = (props) => {
     const [funTagX, setFunTagX] = useState(false);
     const [metaTagX, setMetaTagX] = useState(false);
     const [urgentTagX, setUrgentTagX] = useState(false);
+    const [opacityLevel, setOpacityLevel] = useState(0);
+    const [addNewpost, setAddNewPost] = useState(false);
 
     const {isAuth , activeUser, newNote, setNewNote} = useContext(AuthContext);
 
@@ -54,6 +54,28 @@ const Printa = (props) => {
     colorSarray.push(new colorSconst("rgb(75, 0, 250)","rgb(75, 0, 250)","rgb(155, 112, 255)","rgb(155, 112, 255)","rgb(155, 112, 255)","rgb(155, 112, 255)","rgb(155, 112, 255)","rgb(75, 0, 250)","rgb(155, 112, 255)","rgb(155, 112, 255)","rgb(75, 0, 250)","rgb(75, 0, 250)","rgb(155, 112, 255)"));
     colorSarray.push(new colorSconst("rgb(46, 155, 137)","rgb(46, 155, 137)","rgb(70, 255, 224)","rgb(70, 255, 224)","rgb(70, 255, 224)","rgb(70, 255, 224)","rgb(70, 255, 224)","rgb(46, 155, 137))","rgb(70, 255, 224)","rgb(70, 255, 224)","rgb(46, 155, 137)","rgb(46, 155, 137)","rgb(70, 255, 224)"));
 
+   
+
+    useEffect(() => {
+
+        let y = 0;
+        let z = 0;
+        let ani = 0;
+    
+        const aniMation =() => {
+            ani = setInterval(function() {
+                setOpacityLevel(y);
+                y = z*4*0.01;
+                z++;
+            }, 45);                
+        }
+    
+        aniMation();
+        setTimeout(function() {
+            clearTimeout(ani);
+        }, 1250);
+
+    }, [addNewpost])
 
     const addNoteCheck = (props) => {
         
@@ -65,9 +87,12 @@ const Printa = (props) => {
         if(replayText2 === ""){
             omegaX = true;
         }
-        if(omegaX){
-            alert("Forget title or input text!");
+        if(omegaX || !isAuth){
+            alert("Forgot title,input text or not logged in!");
         } else {
+           
+            setAddNewPost(!addNewpost);
+            console.log(addNewpost);
             const date = new Date();
             console.log(date.getFullYear()+"-"+(date.getUTCMonth()+1)+"-"+date.getUTCDate());
             let i = Math.floor(Math.random() * 9);
@@ -110,9 +135,10 @@ const Printa = (props) => {
 
             <label for="constr-subject" className="newNoteSubjectTitle"><b>New Note Subject</b></label>
             <textarea id="constr-subject" rows="12" cols="24" className="subjectTextArea" maxlength="275" onChange={e => setReplayText2(e.target.value)}></textarea><br/>
-
+            
             <input type="button" id="constr-submit" name="submit" value="Submit" className="submitNoteButton" onClick={e => addNoteCheck(props)}/>
             <input type="button" id="constr-close" name="close" value="close" onClick={e => setNewNote(false)}/>
+           
             </form>
         </div>
 
@@ -193,15 +219,11 @@ const Printa = (props) => {
         setShowReplay(!showReplay)
     }
 
-    /*   {<img src={tagFun} className="funloggaInNote"></img>
-                <img src={tagMeta} className="metaloggaInNote"></img>
-                <img src={tagUrgent} className="urgentloggaInNote"></img>}
-
-                return `profileTextField${y}`
-
-                 {printaTags(props, index)}
-                */
-
+    const ifFirstPost = (b) =>{
+         if(b === 0) {
+            return opacityLevel
+         }else return "100"
+    } 
 
 
 return (
@@ -211,7 +233,7 @@ return (
 
         {props.notes.map((p, index) => 
         
-        <div key={p.index} className="individualNote" style={{borderColor: colorSarray[p.theme].main}}>
+        <div key={p.index} className="individualNote" style={{borderColor: colorSarray[p.theme].main, opacity: ifFirstPost(index)}}>
                 
             <div className="newNoteTopTitle" style={{color: colorSarray[p.theme].title}}><b>{p.title}</b></div>
             <div className="subjectInNote" style={{backgroundColor: colorSarray[p.theme].subject}}>{p.message}</div>

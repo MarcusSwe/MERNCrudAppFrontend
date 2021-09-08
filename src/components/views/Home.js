@@ -32,9 +32,12 @@ export const Home = () => {
  
 
     const addNote = (theme, addDate, addAuthor, addTitle, addMessage, tagFun, tagMeta, tagUrgent) => {
+        
         const changed = [...testNote];
         changed.unshift({theme: theme, author: addAuthor, title: addTitle, message: addMessage, date: addDate, tags: {fun:tagFun, meta: tagMeta, urgent: tagUrgent}, upvote:0, replays:0, replayss:[]})
         setTestNote(changed);
+        
+
     }
 
 

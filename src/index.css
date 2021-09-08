@@ -111,8 +111,8 @@ input:-webkit-autofill:active
 
   .topMenuButtons12 {
     position: relative;
-    top: 218px;
-    right:2px;
+    top: 205px;
+    right:5px;
     float:right;
     font-family: 'IndieFlowerRegular';
     font-weight: normal;
@@ -126,8 +126,8 @@ input:-webkit-autofill:active
 
 .topMenuButtons13 {
   position: relative;
-  top: 187px;
-  left:22px;
+  top: 175px;
+  left:19px;
   float:right;
   font-family: 'IndieFlowerRegular';
   font-weight: normal;
@@ -605,7 +605,7 @@ grid-template-columns: repeat(auto-fill, minmax(50px, 300px));
   .subjectInNote {
       position: relative;
       background-color: rgba(2, 213, 250, 0.918);
-      border-color: rgb(1, 238, 255);
+      border-color: rgba(1, 238, 255, 0);
       border-radius: 3px;
      width: 220px;
      height: 210px;
@@ -616,6 +616,13 @@ grid-template-columns: repeat(auto-fill, minmax(50px, 300px));
      top: -55px;
      right: -10px;
      word-wrap: break-word;
+     resize: none;
+     border:none;
+     outline:none;
+
+     -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
      
   }
   

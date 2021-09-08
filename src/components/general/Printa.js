@@ -225,6 +225,24 @@ const Printa = (props) => {
          }else return "100"
     } 
 
+    const showUpdateButton = (c) => {
+        if(c === activeUser.username){
+            return `topMenuButtons13`
+        } else return `topMenuButtons13 hidden`
+    }
+
+    const showDeleteButton = (v) => {
+        if(v === activeUser.username){
+            return `topMenuButtons12`
+        } else return `topMenuButtons12 hidden`
+    }
+
+    const openCloseTextArea = (v) => {
+        if(v === activeUser.username){
+            return ""
+        } else return "true"
+    }
+
 
 return (
     <div class="mainParentNote">
@@ -235,11 +253,11 @@ return (
         
         <div key={p.index} className="individualNote" style={{borderColor: colorSarray[p.theme].main, opacity: ifFirstPost(index)}}>
                 
-            <button className="topMenuButtons12" >X</button>   
-            <button className="topMenuButtons13" >E</button>   
+            <button className={showDeleteButton(p.author)} onClick={e => {console.log("HEEEEEEEEEEEEJ")}}>X</button>   
+            <button className={showUpdateButton(p.author)} onClick={e => {console.log("HEEEEEEEEEEEEJ")}}>E</button>   
 
             <div className="newNoteTopTitle" style={{color: colorSarray[p.theme].title}}><b>{p.title}</b></div>
-            <div className="subjectInNote" style={{backgroundColor: colorSarray[p.theme].subject}}>{p.message}</div>
+            <textarea className="subjectInNote" style={{backgroundColor: colorSarray[p.theme].subject}} readOnly={openCloseTextArea(p.author)} >{p.message}</textarea>
             
             <div className="voteDiv">
                 <p className="voteNumber" style={{color: colorSarray[p.theme].vote}}>{p.upvote}</p>

@@ -108,6 +108,41 @@ input:-webkit-autofill:active
       border-color:rgb(0, 0, 0) ;
       
   }
+
+  .topMenuButtons12 {
+    position: relative;
+    top: 218px;
+    right:2px;
+    float:right;
+    font-family: 'IndieFlowerRegular';
+    font-weight: normal;
+    font-style: bold;
+    font-size: 15px;
+    color:rgb(253, 0, 0) ;
+    background-color: rgba(0, 0, 0, 0);
+    border-color:rgb(0, 0, 0) ;
+    
+}
+
+.topMenuButtons13 {
+  position: relative;
+  top: 187px;
+  left:22px;
+  float:right;
+  font-family: 'IndieFlowerRegular';
+  font-weight: normal;
+  font-style: bold;
+  font-size: 15px;
+  color:rgb(1, 210, 238) ;
+  background-color: rgba(0, 0, 0, 0);
+  border-color:rgb(0, 0, 0) ;
+  
+}
+
+/* 
+top: 95px;
+top: 125px;
+*/
   
   .topMenuButtons:focus {
       border-color:#00000063;

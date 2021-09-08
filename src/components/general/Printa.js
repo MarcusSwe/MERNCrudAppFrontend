@@ -65,7 +65,7 @@ const Printa = (props) => {
         const aniMation =() => {
             ani = setInterval(function() {
                 setOpacityLevel(y);
-                y = z*4*0.01;
+                y = z*3.8*0.01;
                 z++;
             }, 45);                
         }
@@ -73,7 +73,7 @@ const Printa = (props) => {
         aniMation();
         setTimeout(function() {
             clearTimeout(ani);
-        }, 1250);
+        }, 1350);
 
     }, [addNewpost])
 
@@ -134,7 +134,7 @@ const Printa = (props) => {
                 </div>
 
             <label for="constr-subject" className="newNoteSubjectTitle"><b>New Note Subject</b></label>
-            <textarea id="constr-subject" rows="12" cols="24" className="subjectTextArea" maxlength="275" onChange={e => setReplayText2(e.target.value)}></textarea><br/>
+            <textarea rows="12" cols="24" className="subjectTextArea" maxlength="275" onChange={e => setReplayText2(e.target.value)}></textarea><br/>
             
             <input type="button" id="constr-submit" name="submit" value="Submit" className="submitNoteButton" onClick={e => addNoteCheck(props)}/>
             <input type="button" id="constr-close" name="close" value="close" onClick={e => setNewNote(false)}/>
@@ -235,6 +235,9 @@ return (
         
         <div key={p.index} className="individualNote" style={{borderColor: colorSarray[p.theme].main, opacity: ifFirstPost(index)}}>
                 
+            <button className="topMenuButtons12" >X</button>   
+            <button className="topMenuButtons13" >E</button>   
+
             <div className="newNoteTopTitle" style={{color: colorSarray[p.theme].title}}><b>{p.title}</b></div>
             <div className="subjectInNote" style={{backgroundColor: colorSarray[p.theme].subject}}>{p.message}</div>
             

@@ -35,11 +35,11 @@ const NoteService = {
       return { error: error };
     }
   },
-  updateNote : async (note) => {
+  updateNote : async (note, m) => {
     try {
-      const res = await fetch("/user/updatenote/"+note.id, {
+      const res = await fetch(`http://localhost:5000/user/updatenote/${note}`, {
         method: "put",
-        body: JSON.stringify(note),
+        body: JSON.stringify({message: m}),
         headers: {
           "Content-type": "application/json",
         },

@@ -16,7 +16,7 @@ export const Home = () => {
             const omegaY = [...data]; 
             omegaY.reverse();
             setTestNote(omegaY);
-            console.log(omegaY);
+            //console.log(omegaY);
         }
         getNotes();
     },[omegaHook]);
@@ -74,16 +74,26 @@ export const Home = () => {
 
         const data = await NoteService.deleteNote(getID);
 
-        const changed = [...testNote];
+      /*  const changed = [...testNote];
         changed.splice(d,1);
-        setTestNote(changed);
+        setTestNote(changed);*/
+        yesGo();
     }
 
-    const updatePostX = (i, m) => {
+    const updatePostX = async (i, m) => {
+
+        const getID = testNote[i]._id;
+
+        const data = await NoteService.updateNote(getID, m);
+
+        console.log(getID, m);
+
+        /*
         const changed = [...testNote];
         changed[i].message = m;
         console.log(changed[i].message ,i);
-        setTestNote(changed);
+        setTestNote(changed);*/
+        yesGo();
     }
 
     const {isAuth , activeUser} = useContext(AuthContext);

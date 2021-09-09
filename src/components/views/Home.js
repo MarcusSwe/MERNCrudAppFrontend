@@ -83,6 +83,7 @@ export const Home = () => {
     const updatePostX = async (i, m) => {
 
         const getID = testNote[i]._id;
+        const omegaLOL = `{message: ${m}}`
 
         const data = await NoteService.updateNote(getID, m);
 

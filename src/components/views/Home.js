@@ -70,9 +70,9 @@ export const Home = () => {
 
     const deletePostX = async (d) => {
 
-        const testD = "613a692d21067f230ea5cde3";
+        const getID = testNote[d]._id;
 
-        const data = await NoteService.deleteNote(testD);
+        const data = await NoteService.deleteNote(getID);
 
         const changed = [...testNote];
         changed.splice(d,1);

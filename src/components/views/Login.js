@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import AuthService from "../../services/AuthService";
 
 export const Login = () => {
 
@@ -12,13 +13,24 @@ export const Login = () => {
         setUser({...user, [e.target.name]: e.target.value});
     };
 
-    const loginUser = (e) => {
+    const loginUser = async (e) => {
         e.preventDefault();
-        setIsAuth(true);
-        setActiveUser(user);
-        history.push("/");
+       
+        const data = await AuthService.login(user);
+
+        const { message } = data;
+        
+        if(!message.msgError) {
+            setIsAuth(true);
+            setActiveUser(user);
+            history.push("/");
+        } else alert("Wrong password or user dont exist!");
+
+
     }
-    
+  
+
+
     return (      
             <div className="loginDiv">                            
                 <form onSubmit = {loginUser}>

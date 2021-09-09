@@ -1,41 +1,48 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { AuthContext  } from "../../context/AuthContext";
 import Printa from '../general/Printa';
-
+import NoteService from "../../services/NoteService";
 
 
 
 export const Home = () => {
 
-    const [testNote, setTestNote] = useState([
-        {theme: 0, author: "testUser", title: "title", message: "asfkjasdflökj asdflkjsdaf asdlfkjsad asdklfj asdfölkjs dsflöksjdf  sadfklösdjf asdfaf",
-    date: "2021-9-9", tags:{fun: true, meta:true, urgent:true}, upvote: 5, replays: 2, 
-    replayss:[{replayUser: "replayUser", replayText: "replaytext"},
-     {replayUser: "replayUser2", replayText: "replaytext2"}]
-    },
-    {theme: 1, author: "testUser2", title: "title2", message: "23456456 34564356 asdlfkjsad asd4356j asdfölkjs dsflöksjdf  sadfklösdjf asdfaf",
-    date: "2022-9-9", tags:{fun: true, meta:true, urgent:false}, upvote: 1, replays: 3, 
-    replayss:[{replayUser: "replayUser10", replayText: "replaytext2"},
-     {replayUser: "replayUser22", replayText: "replaytext22"},
-     {replayUser: "replayUser2432", replayText: "replaytext2432"}]
-    },
-    {theme: 6, author: "testUser3", title: "title3", message: "oemga ösdjf asdfaf",
-    date: "2022-9-9", tags:{fun: false, meta:false, urgent:true}, upvote: 1, replays: 0, 
-    replayss:[]
-    },    
-    {theme: 8, author: "testUser3", title: "title3", message: "oemga ösdjf asdfaf",
-    date: "2022-9-9", tags:{fun: false, meta:false, urgent:false}, upvote: 1, replays: 1, 
-    replayss:[{replayUser: "replayUser10", replayText: "replaytext2"}]
-    }
-    ])
+    const [testNote, setTestNote] = useState([])
+    const [omegaHook, callOmegaHook] = useState(true);
 
+    useEffect (() => {
+        async function getNotes(){        
+            const data = await NoteService.getNotes();
+            const omegaY = [...data];
+            setTestNote(omegaY);
+            console.log(omegaY);
+        }
+        getNotes();
+    },[omegaHook]);
  
 
-    const addNote = (theme, addDate, addAuthor, addTitle, addMessage, tagFun, tagMeta, tagUrgent) => {
-        
+    const yesGo = () => {
+        callOmegaHook(!omegaHook);
+    }
+
+    const addNote = async (Xtheme, addDate, addAuthor, addTitle, addMessage, tagFun, tagMeta, tagUrgent) => {
+
+        console.log(Xtheme, addDate, addAuthor, addTitle, addMessage, tagFun, tagMeta, tagUrgent);
+
+        const newNoteX = {theme: Xtheme, date: addDate, title: addTitle, author: addAuthor, message: addMessage, tags:{fun:tagFun, meta:tagMeta, urgent: tagUrgent}, upvote:0, replayss:[], replays:0};
+
+        const data = await NoteService.newNote(newNoteX);
+        const { message } = data;
+
+        if(!message.msgError) {        
+            yesGo();    
+        } else alert ("Something went wrong! Try again!");
+
+
+        /*
         const changed = [...testNote];
-        changed.unshift({theme: theme, author: addAuthor, title: addTitle, message: addMessage, date: addDate, tags: {fun:tagFun, meta: tagMeta, urgent: tagUrgent}, upvote:0, replays:0, replayss:[]})
-        setTestNote(changed);
+        changed.unshift({theme: Xtheme, author: addAuthor, title: addTitle, message: addMessage, date: addDate, tags: {fun:tagFun, meta: tagMeta, urgent: tagUrgent}, upvote:0, replays:0, replayss:[]})
+        setTestNote(changed);*/
         
 
     }
@@ -60,7 +67,12 @@ export const Home = () => {
         setTestNote(changed);
     }
 
-    const deletePostX = (d) => {
+    const deletePostX = async (d) => {
+
+        const testD = "613a692d21067f230ea5cde3";
+
+        const data = await NoteService.deleteNote(testD);
+
         const changed = [...testNote];
         changed.splice(d,1);
         setTestNote(changed);

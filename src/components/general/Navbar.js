@@ -7,13 +7,15 @@ import '../../index.css';
 
 export const Navbar = () => {
 
-    const {isAuth, setIsAuth, activeUser, newNote, setNewNote} = useContext(AuthContext);
+    const {isAuth, setIsAuth, activeUser, newNote, setNewNote, setActiveUser} = useContext(AuthContext);
     const history = useHistory();
 
 
 
     const logout = () => {
         setIsAuth(false);
+        setNewNote(false);
+        setActiveUser("");
         history.push("/");
     }
 

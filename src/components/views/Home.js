@@ -15,8 +15,7 @@ export const Home = () => {
             const data = await NoteService.getNotes();
             const omegaY = [...data]; 
             omegaY.reverse();
-            setTestNote(omegaY);
-            //console.log(omegaY);
+            setTestNote(omegaY);            
         }
         getNotes();
     },[omegaHook]);
@@ -30,20 +29,18 @@ export const Home = () => {
 
         console.log(Xtheme, addDate, addAuthor, addTitle, addMessage, tagFun, tagMeta, tagUrgent);
 
-        const newNoteX = {theme: Xtheme, date: addDate, title: addTitle, author: addAuthor, message: addMessage, tags:{fun:tagFun, meta:tagMeta, urgent: tagUrgent}, upvote:0, replayss:[], replays:0};
+        const newNoteX = {theme: Xtheme, date: addDate, title: addTitle, author: addAuthor, message: addMessage, tags:{fun:tagFun, meta:tagMeta, urgent: tagUrgent}, upvote:0, replayss:[], replays:0, voters:[]};
+
+
 
         const data = await NoteService.newNote(newNoteX);
         const { message } = data;
 
         if(!message.msgError) {        
-            //yesGo();    
+            yesGo();    
         } else alert ("Something went wrong! Try again!");
-
-
         
-        const changed = [...testNote];
-        changed.unshift({theme: Xtheme, author: addAuthor, title: addTitle, message: addMessage, date: addDate, tags: {fun:tagFun, meta: tagMeta, urgent: tagUrgent}, upvote:0, replays:0, replayss:[]})
-        setTestNote(changed);
+       
         
 
     }
@@ -80,10 +77,30 @@ export const Home = () => {
         const getID = testNote[i]._id;   
         const siffra = testNote[i].upvote+1;   
 
-        console.log(siffra);
+      
+       
 
-        const data = await NoteService.updateNoteUpvote(getID, siffra);
-        yesGo();
+        const addVoster = [...testNote[i].voters];
+        console.log(addVoster);
+
+       // addVoster.reverse();
+        
+
+        
+        if(addVoster.includes(activeUser.username) || !isAuth){
+            alert("You already voted or not logged in!");
+        } else {
+            console.log(isAuth);
+            addVoster.push(activeUser.username);         
+            console.log(addVoster);
+            console.log(siffra);
+            console.log(getID);
+            const data2 = await NoteService.updateNoteNewVoteName(getID, addVoster);
+            const data = await NoteService.updateNoteUpvote(getID, siffra);
+            yesGo();
+        }
+
+        
 
         /*const changed = [...testNote];
         let x = changed[i].upvote;

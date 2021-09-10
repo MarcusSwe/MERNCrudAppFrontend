@@ -75,6 +75,27 @@ const NoteService = {
       return { error: error };
     }
   },
+  updateNoteUpvote : async (note, m) => {
+    try {
+      const res = await fetch(`http://localhost:5000/user/updatenote/${note}`, {
+        method: "put",
+        body: JSON.stringify({upvote: m}),
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+      if (res.status !== 401) {
+        const data = await res.json();
+        return data;
+      } else {
+        return {
+          message: { msgBody: "Unauthorized to update note", msgError: true },
+        };
+      }
+    } catch (error) {
+      return { error: error };
+    }
+  },
 };
 
 export default NoteService;

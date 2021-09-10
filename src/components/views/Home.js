@@ -61,11 +61,20 @@ export const Home = () => {
         setTestNote(changed);}
     }
 
-    const addUpvote = (i) => {
-        const changed = [...testNote];
+    const addUpvote = async (i) => {
+
+        const getID = testNote[i]._id;   
+        const siffra = testNote[i].upvote+1;   
+
+        console.log(siffra);
+
+        const data = await NoteService.updateNoteUpvote(getID, siffra);
+        yesGo();
+
+        /*const changed = [...testNote];
         let x = changed[i].upvote;
         changed[i].upvote = x+1;
-        setTestNote(changed);
+        setTestNote(changed);*/
     }
 
     const deletePostX = async (d) => {
@@ -82,13 +91,10 @@ export const Home = () => {
 
     const updatePostX = async (i, m) => {
 
-        const getID = testNote[i]._id;
-        const omegaLOL = `{message: ${m}}`
+        const getID = testNote[i]._id;     
 
-        const data = await NoteService.updateNote(getID, m);
-
-        console.log(getID, m);
-
+        
+        const data = await NoteService.updateNote(getID, m);      
         /*
         const changed = [...testNote];
         changed[i].message = m;

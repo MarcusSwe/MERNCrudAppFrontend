@@ -36,14 +36,14 @@ export const Home = () => {
         const { message } = data;
 
         if(!message.msgError) {        
-            yesGo();    
+            //yesGo();    
         } else alert ("Something went wrong! Try again!");
 
 
-        /*
+        
         const changed = [...testNote];
         changed.unshift({theme: Xtheme, author: addAuthor, title: addTitle, message: addMessage, date: addDate, tags: {fun:tagFun, meta: tagMeta, urgent: tagUrgent}, upvote:0, replays:0, replayss:[]})
-        setTestNote(changed);*/
+        setTestNote(changed);
         
 
     }

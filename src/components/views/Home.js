@@ -50,15 +50,28 @@ export const Home = () => {
 
 
 
-    const addReplayToNote = (i, newReplayX) => {
+    const addReplayToNote = async (i, newReplayX) => {
         if(isAuth){
-        const changed = [...testNote];
+            console.log("CP");
+            const getID = testNote[i]._id;
+            const getreply = [...testNote[i].replayss]
+            
+            getreply.push({sender: activeUser.username, content: newReplayX});
+            
+            console.log(getreply);
+
+            const data = await NoteService.updateNoteNewReply(getID, getreply);
+
+
+       /* const changed = [...testNote];
         let x = changed[i].replays;
         //console.log(changed);
         console.log(activeUser.username);
         changed[i].replayss.push({replayUser: activeUser.username, replayText: newReplayX});
         changed[i].replays = x+1;
-        setTestNote(changed);}
+        setTestNote(changed);*/}
+
+        yesGo();
     }
 
     const addUpvote = async (i) => {

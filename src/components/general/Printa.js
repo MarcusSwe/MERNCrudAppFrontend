@@ -157,7 +157,7 @@ const Printa = (props) => {
            returnX = <div>
            {props.notes[index].replayss.map((p, index) =>
                <div className="reply" style={{backgroundColor: colorSarray[props.notes[y].theme].replyDiv}}>
-               {p.replayUser}: {p.replayText}
+               {p.sender}: {p.content}
                </div>
                )};
            </div>            

@@ -96,11 +96,11 @@ const NoteService = {
       return { error: error };
     }
   },
-  updateNoteNewReply : async (note, m) => {
+  updateNoteNewReply : async (note, m, n) => {
     try {
       const res = await fetch(`http://localhost:5000/user/updatenote/${note}`, {
         method: "put",
-        body: JSON.stringify({replayy: m}),
+        body: JSON.stringify({replayy: m, replays:n}),
         headers: {
           "Content-type": "application/json",
         },

@@ -55,12 +55,13 @@ export const Home = () => {
             console.log("CP");
             const getID = testNote[i]._id;
             const getreply = [...testNote[i].replayss]
+            const getreplynumbers = testNote[i].replays+1;
             
             getreply.push({sender: activeUser.username, content: newReplayX});
             
             console.log(getreply);
 
-            const data = await NoteService.updateNoteNewReply(getID, getreply);
+            const data = await NoteService.updateNoteNewReply(getID, getreply, getreplynumbers);
 
 
        /* const changed = [...testNote];

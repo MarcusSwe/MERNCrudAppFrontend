@@ -5,6 +5,7 @@ import { Home } from './components/views/Home';
 import { Login } from './components/views/Login';
 import { Register } from './components/views/Register';
 import { Navbar } from './components/general/Navbar';
+import { UnPrivateRoute } from "./hocs/UnPrivateRoute";
 
 function App() {
   return (
@@ -12,11 +13,13 @@ function App() {
     <Router>
       <Navbar />
       <Route exact path="/" component={Home} />
-      <Route path ="/login" component={Login} />
-      <Route path ="/register" component={Register} />
+      <UnPrivateRoute path ="/login" component={Login} />     
+      <UnPrivateRoute path ="/register" component={Register} />      
     </Router>
 
   );
 }
 
 export default App;
+
+// 

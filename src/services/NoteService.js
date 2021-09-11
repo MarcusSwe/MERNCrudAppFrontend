@@ -1,7 +1,7 @@
 const NoteService = {
   getNotes: async () => {
     try {
-      const res = await fetch("/user/getnotes");
+      const res = await fetch(`http://localhost:5000/user/getnotes`);
       if (res.status !== 401) {
         const data = await res.json();
         return data;

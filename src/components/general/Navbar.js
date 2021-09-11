@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { NavLink, useHistory } from "react-router-dom";
 import omegapog2 from '../../omegapog2.png';
 import notes2 from '../../notes2.png';
 import '../../index.css';
+import AuthService from '../../services/AuthService';
 
 export const Navbar = () => {
 
@@ -12,10 +13,19 @@ export const Navbar = () => {
 
 
 
-    const logout = () => {
-        setIsAuth(false);
-        setNewNote(false);
-        setActiveUser("");
+    const logout = async () => {
+        
+        const data = await AuthService.logout();
+
+        const { message } = data;
+        
+        if(!message.msgError) {
+            setIsAuth(false);
+            setNewNote(false);
+            setActiveUser("");
+            history.push("/");
+        } else alert("Error try again!");
+
         history.push("/");
     }
 
@@ -57,9 +67,45 @@ export const Navbar = () => {
           </div>
         )
     }
+  
+
+
+    useEffect (() => {
+
+        async function checkifLogin(){        
+            
+            const data = await AuthService.isAuthenticated()
+            console.log("DAAAAAAAAAAAAAAAATA");
+            console.log(data);
+            const { message } = data;           
+            console.log("msg ERRRRRRRRRRRRRRRRRRRRRROR");
+            console.log(message.msgError);
+
+            if(!message.msgError) {
+                setIsAuth(true);        
+                console.log("INLOGGAD", data.user.username);
+                setActiveUser({username: data.user.username});   
+                console.log(activeUser);                                        
+                console.log("INLOGGAD", data.user.username);
+                
+            } else {
+                setIsAuth(false);
+                setNewNote(false);
+                setActiveUser("");
+                console.log("INTE INLOGGAD")
+                
+            }
+            
+
+        }
+
+        checkifLogin();
+    },[]);
+ 
 
     return (
-        <div>
+        <div>      
+              
             {isAuth ? authNavbar() : unAuthNavbar()}
         </div>
     )

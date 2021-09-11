@@ -22,6 +22,7 @@ export const Login = () => {
         
         if(!message.msgError) {
             setIsAuth(true);
+            console.log(user);
             setActiveUser(user);
             history.push("/");
         } else alert("Wrong password or user dont exist!");

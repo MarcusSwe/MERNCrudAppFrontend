@@ -13,6 +13,7 @@ export const Home = () => {
     useEffect (() => {
         async function getNotes(){        
             const data = await NoteService.getNotes();
+            console.log(data);
             const omegaY = [...data]; 
             omegaY.reverse();
             setTestNote(omegaY);            

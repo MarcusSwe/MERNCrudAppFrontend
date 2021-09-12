@@ -4,5 +4,5 @@ Note App - Create account -> Make notes -> Upvote and leave replies -> delete or
 
 Groupproject together with https://github.com/Changzhouli3309/note_project and Martin.
 
-![alt text](https://i.imgur.com/HmtfCRv.png)
+![alt text](https://i.imgur.com/XtSY6A2.png)
 

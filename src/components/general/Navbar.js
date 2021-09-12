@@ -74,28 +74,19 @@ export const Navbar = () => {
 
         async function checkifLogin(){        
             
-            const data = await AuthService.isAuthenticated()
-            console.log("DAAAAAAAAAAAAAAAATA");
-            console.log(data);
-            const { message } = data;           
-            console.log("msg ERRRRRRRRRRRRRRRRRRRRRROR");
-            console.log(message.msgError);
+            const data = await AuthService.isAuthenticated()            
+            const { message } = data;         
+           
 
             if(!message.msgError) {
-                setIsAuth(true);        
-                console.log("INLOGGAD", data.user.username);
-                setActiveUser({username: data.user.username});   
-                console.log(activeUser);                                        
-                console.log("INLOGGAD", data.user.username);
+                setIsAuth(true);                   
+                setActiveUser({username: data.user.username});                 
                 
             } else {
                 setIsAuth(false);
                 setNewNote(false);
-                setActiveUser("");
-                console.log("INTE INLOGGAD")
-                
-            }
-            
+                setActiveUser("");                
+            }     
 
         }
 

@@ -12,37 +12,18 @@ export const Register = () => {
     const changeUserData = (e) => {
         setUser({...user, [e.target.name]: e.target.value});
     };
-
-
-   /* const registerUserX= async () => {
-        try {
-          const res = await fetch("user/register", {
-            method: "post",
-            body: JSON.stringify(user),
-            headers: { "Content-Type": "application/json" },
-          });
-          const data = await res.json();
-          return data;
-        } catch (error) {
-          return { error: error };
-        }
-      }*/
+ 
 
     // behövs async kan inte använda await annars.. 
     const registerUser = async (e) => {
-        e.preventDefault();       
-
-        // registerUserX();
+        e.preventDefault();         
         
             const data = await AuthService.register(user);
         
             const { message } = data;
 
-            if(!message.msgError) {
-            setIsAuth(true);
-            setActiveUser(user);
-            history.push("/");    
-            console.log(user);
+            if(!message.msgError) {            
+            history.push("/login");              
             }
         
     };
